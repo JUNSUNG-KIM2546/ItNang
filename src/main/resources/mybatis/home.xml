@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="home">
+	<sql id="search">
+		SELECT * FROM board 
+		<where>
+			<if test="search == 1">
+				board_id = #{keyword}
+			</if>
+			<if test="search == 2">
+				board_sj LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			</if>
+		</where>
+		ORDER BY board_id
+	</sql>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (<include refid="search"></include>)
+	</select>
+	
+	<select id="communitylist" resultType="CommunityVo">
+		SELECT *
+		FROM (SELECT sub.*, ROWNUM rnum FROM (<include refid="search"></include>) sub)
+		
+		<!-- 씨데이타 = 여기있는것은 문법검사를 하지마! 오류가 나도 오류가 검출되지않음 -->
+		<![CDATA[
+		WHERE rnum > ((#{page} - 1) * #{perPage}) AND rnum <= (#{page} * #{perPage})
+		]]>
+	</select>
+	
+	<select id="item" resultType="CommunityVo">
+		SELECT *
+		FROM board
+		WHERE board_id = #{boardId}
+	</select>
+	
+	<insert id="communityadd">
+		INSERT INTO board (
+			BOARD_ID, 
+			BOARD_SJ, 
+			INQIRE_CO, 
+			NOTICE_AT, 
+			OTHBC_AT, 
+			USE_AT,
+			FRST_REGIST_PNTTM,
+			FRST_REGISTER_ID,
+			LAST_UPDT_PNTTM,
+			LAST_UPDUSR_ID
+		)
+		VALUES (
+			#{boardId},
+			#{boardSj},
+			0,
+			'Y',
+			'Y',
+			'Y',
+			SYSDATE,
+			'admin',
+			SYSDATE,
+			'admin'
+		)
+	</insert>
+	
+	<update id="communityupdate">
+		UPDATE board
+		SET bookname = #{bookname}, publisher = #{publisher}, price = #{price}
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<delete id="communitydelete">
+		DELETE FROM board
+		WHERE board_id = #{boardId}
+	</delete>
+</mapper>

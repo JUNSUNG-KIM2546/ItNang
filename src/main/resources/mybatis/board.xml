@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	
+	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
+	<!-- <resultMap type="kr.co.ac.vo.BoardVo" id="boardVo">
+		<result property="boardId" column="BOARD_ID"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="boardSj" column="BOARD_SJ"/>
+		<result property="boardCn" column="BOARD_CN"/>
+		<result property="boardCo" column="BOARD_CO"/>
+		<result property="boardIp" column="BOARD_IP"/>
+		<result property="boardAt" column="BOARD_FRST"/>
+		<result property="boardImg" column="BOARD_IMG"/>
+		<result property="boardFrst" column="BOARD_FRST"/>
+		<result property="boardLast" column="BOARD_LAST"/>
+	</resultMap> -->
+	
+	<select id="boardlist" resultType="BoardVo">
+		SELECT *  
+		FROM BOARD
+		ORDER BY BOARD_ID DESC
+	</select>
+	
+	<select id="item" resultType="BoardVo">
+		SELECT BOARD_ID,
+			   USER_ID,
+	   		   BOARD_SJ,
+	   		   BOARD_CN,
+	   		   BOARD_CO,
+	   		   BOARD_IMG,
+	   		   BOARD_FRST,
+	   		   BOARD_LAST
+	   		   
+		FROM BOARD 
+		WHERE board_id = #{boardId}
+	</select>
+	
+	<insert id="boardadd">
+		INSERT INTO board (
+			BOARD_ID,
+			USER_ID,
+			BOARD_SJ,
+			BOARD_CN,
+			BOARD_CO,
+			BOARD_IMG,
+			BOARD_FRST
+		)
+		VALUES (
+			BOARD_SQ.nextval,
+			#{userId},
+			#{boardSj},
+			#{boardCn},
+			0,
+			#{boardImg},
+			SYSDATE
+		)
+	</insert>
+	
+	<update id="boardupdate">
+		UPDATE board
+		SET BOARD_SJ = #{boardSj}, BOARD_CN = #{boardCn}, BOARD_IMG = #{boardImg}, BOARD_LAST = SYSDATE
+		WHERE USER_ID = #{UsersVo.id} AND BOARD_ID = #{boardId}
+	</update>
+	
+	<delete id="boarddelete">
+		DELETE FROM board
+		WHERE BOARD_ID = #{boardId}
+	</delete>
+</mapper>

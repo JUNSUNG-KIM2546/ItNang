@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="users">
+
+	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
+	<resultMap type="kr.co.ac.vo.BoardVo" id="boardVo">
+		<result property="id" column="ID"/>
+		<result property="pass" column="PASS"/>
+		<result property="name" column="NAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="sbscrbde" column="SBSCRBDE"/>
+		<result property="admin" column="ADMIN"/>
+	</resultMap>
+	
+	<sql id="search">
+		SELECT * FROM users 
+		<where>
+			<if test="search == 1">
+				id = #{keyword}
+			</if>
+			<if test="search == 2">
+				name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			</if>
+		</where>
+		ORDER BY id
+	</sql>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (<include refid="search"></include>)
+	</select>
+	
+	<select id="userslist" resultType="UsersVo">
+		SELECT *
+		FROM (SELECT sub.*, ROWNUM rnum FROM (<include refid="search"></include>) sub)
+		
+		<!-- 씨데이타 = 여기있는것은 문법검사를 하지마! 오류가 나도 오류가 검출되지않음 -->
+		<![CDATA[
+		WHERE rnum > ((#{page} - 1) * #{perPage}) AND rnum <= (#{page} * #{perPage})
+		]]>
+	</select>
+	
+	<select id="item" resultType="UsersVo">
+		SELECT *
+		FROM users
+		WHERE id = #{id}
+	</select>
+	
+	<insert id="singup">
+		INSERT INTO users (
+			ID,
+			PASS,
+			NAME,
+			EMAIL,
+			PHONE,
+			SBSCRBDE
+		)
+		VALUES (
+			#{id},
+			#{pass},
+			#{name},
+			#{email},
+			#{phone},
+			SYSDATE
+		)
+	</insert>
+	
+	<update id="usersupdate">
+		UPDATE board
+		SET bookname = #{bookname}, publisher = #{publisher}, price = #{price}
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<delete id="usersdelete">
+		DELETE FROM board
+		WHERE board_id = #{boardId}
+	</delete>
+</mapper>
