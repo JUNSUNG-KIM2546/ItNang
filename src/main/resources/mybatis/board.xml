@@ -3,19 +3,22 @@
 
 <mapper namespace="board">
 	
-	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
-	<!-- <resultMap type="kr.co.ac.vo.BoardVo" id="boardVo">
-		<result property="boardId" column="BOARD_ID"/>
-		<result property="userId" column="USER_ID"/>
-		<result property="boardSj" column="BOARD_SJ"/>
-		<result property="boardCn" column="BOARD_CN"/>
-		<result property="boardCo" column="BOARD_CO"/>
-		<result property="boardIp" column="BOARD_IP"/>
-		<result property="boardAt" column="BOARD_FRST"/>
-		<result property="boardImg" column="BOARD_IMG"/>
-		<result property="boardFrst" column="BOARD_FRST"/>
-		<result property="boardLast" column="BOARD_LAST"/>
-	</resultMap> -->
+	<sql id="search">
+		SELECT * FROM board 
+		<where>
+			<if test="search == 1">
+				BOARD_ID = #{keyword}
+			</if>
+			<if test="search == 2">
+				BOARD_SJ LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			</if>
+		</where>
+		ORDER BY BOARD_ID
+	</sql>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (<include refid="search"></include>)
+	</select>
 	
 	<select id="boardlist" resultType="BoardVo">
 		SELECT *  
@@ -34,7 +37,7 @@
 	   		   BOARD_LAST
 	   		   
 		FROM BOARD 
-		WHERE board_id = #{boardId}
+		WHERE BOARD_ID = #{boardId}
 	</select>
 	
 	<insert id="boardadd">

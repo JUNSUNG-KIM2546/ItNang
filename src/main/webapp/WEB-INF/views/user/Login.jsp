@@ -24,8 +24,8 @@
                 <input type="checkbox" id="remember-check">아이디 저장
             </label>
             <input type="submit" value="Login">
+            <a href="/SingUps" onclick="window.open(this.href, '_blank', 'width=450, height=700'); return false;"><button class="btn-tst" onclick=" window.close();">Singup</button></a>
         </form>
-        <a href="/ac/SingUps" onclick="window.open(this.href, '_blank', 'width=450, height=700'); return false;"><button onclick=" window.close();">Singup</button></a>
     </div>
 
 </body>

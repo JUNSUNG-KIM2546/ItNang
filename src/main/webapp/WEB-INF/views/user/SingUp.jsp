@@ -19,7 +19,10 @@
         <h2><span style="text-shadow:2px 2px 2px #000;">회원가입</span></h2>
         <!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
         <form id="login-form" method="post">
-            <input type="text" name="id" placeholder="ID"><button type="button" id="check_id">중복확인</button>
+        	<div class="idc">
+        		<input type="text"  placeholder="ID">
+        		<button type="button" id="check_id">중복확인</button>
+        	</div>
             <input type="password" name="pass" placeholder="Password">
             <!-- <input type="password" name="passC" placeholder="Password 확인"> -->
             <input type="text" name="name" placeholder="성명">

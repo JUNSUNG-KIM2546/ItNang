@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ac.dao.UsersDao;
+import kr.co.ac.pager.Pager;
 import kr.co.ac.vo.UsersVo;
 
 @Service
@@ -20,8 +21,9 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public List<UsersVo> selectUsersList() {
-		return usersdao.userslist();
+	public List<UsersVo> selectUsersList(Pager pager) {
+		int total = usersdao.total(pager);
+		return usersdao.userslist(pager);
 	}
 
 	@Override

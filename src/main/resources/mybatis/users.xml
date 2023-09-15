@@ -4,7 +4,7 @@
 <mapper namespace="users">
 
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
-	<resultMap type="kr.co.ac.vo.BoardVo" id="boardVo">
+	<resultMap type="kr.co.ac.vo.UsersVo" id="userVo">
 		<result property="id" column="ID"/>
 		<result property="pass" column="PASS"/>
 		<result property="name" column="NAME"/>
@@ -31,7 +31,7 @@
 		SELECT COUNT(*) FROM (<include refid="search"></include>)
 	</select>
 	
-	<select id="userslist" resultType="UsersVo">
+	<select id="userslist" resultMap="userVo">
 		SELECT *
 		FROM (SELECT sub.*, ROWNUM rnum FROM (<include refid="search"></include>) sub)
 		
@@ -41,7 +41,7 @@
 		]]>
 	</select>
 	
-	<select id="item" resultType="UsersVo">
+	<select id="item" resultMap="userVo">
 		SELECT *
 		FROM users
 		WHERE id = #{id}
@@ -66,14 +66,14 @@
 		)
 	</insert>
 	
-	<update id="usersupdate">
-		UPDATE board
+	<!-- <update id="usersupdate">
+		UPDATE users
 		SET bookname = #{bookname}, publisher = #{publisher}, price = #{price}
-		WHERE board_id = #{boardId}
-	</update>
+		WHERE id = #{Id}
+	</update> -->
 	
-	<delete id="usersdelete">
-		DELETE FROM board
-		WHERE board_id = #{boardId}
-	</delete>
+	<!-- <delete id="usersdelete">
+		DELETE FROM users
+		WHERE id = #{id}
+	</delete> -->
 </mapper>

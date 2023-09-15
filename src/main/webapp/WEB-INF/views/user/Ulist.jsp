@@ -47,7 +47,7 @@
 							<th> ${item.phone} </th>
 							<th> <fmt:formatDate value="${item.sbscrbde}" pattern="yyyy.MM.dd"/> </th>
 							<th> ${item.admin} </th>
-							<th> <a href="delete/${item.boardId}" class="btn btn-danger btn-sm"> <i class="bi bi-trash"></i> </a> <a href="update/${item.boardId}" class="btn btn-warning btn-sm"> <i class="bi bi-recycle"></i> </a> </th>
+							<th> <a href="delete/${item.id}" class="btn btn-danger btn-sm"> <i class="bi bi-trash"></i> </a> <a href="update/${item.id}" class="btn btn-warning btn-sm"> <i class="bi bi-recycle"></i> </a> </th>
 						</tr>
 					</c:forEach>
 				</tbody>

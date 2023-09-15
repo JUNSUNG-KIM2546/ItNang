@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.co.ac.pager.Pager;
 import kr.co.ac.service.UsersService;
 import kr.co.ac.vo.UsersVo;
 
@@ -31,7 +32,7 @@ public class SingupController {
 		return user +  "SingUp";
 	}
 	@PostMapping("/SingUps")
-	String usersadd(UsersVo item) {
+	String SingUp(UsersVo item) {
 		usersservice.SingUp(item);
 		return "redirect:hello";
 		//리다이렉트
@@ -39,15 +40,15 @@ public class SingupController {
 	
 	// 회원리스트
 	@GetMapping("/UsersList")
-	String userslist(Model model) {
-		List<UsersVo> userslist = usersservice.selectUsersList();
+	String userslist(Model model, Pager pager) {
+		List<UsersVo> userslist = usersservice.selectUsersList(pager);
 		model.addAttribute("userslist", userslist);
 		
 		return user + "Ulist";
 	}
 	
 	// 회원업데이트
-	@GetMapping("/USERupdate/{id}")
+	@GetMapping("/UserUpdate/{id}")
 	String usersupdate(@PathVariable String id, Model model) {
 		UsersVo item = usersservice.item(id);
 		
@@ -55,7 +56,7 @@ public class SingupController {
 		
 		return user + "Uupdate";
 	}	
-	@PostMapping("/USERupdate/{id}")
+	@PostMapping("/UserUpdate/{id}")
 	String usersupdate(@PathVariable String id, UsersVo item) {
 		item.setId(id);
 		
@@ -66,7 +67,7 @@ public class SingupController {
 	}
 	
 	// 회원삭제
-	@GetMapping("/USERdelete/{id}")
+	@GetMapping("/UserDelete/{id}")
 	String usersdelete(@PathVariable String id) {
 		usersservice.delete(id);
 			

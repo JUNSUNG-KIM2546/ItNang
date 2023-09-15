@@ -21,7 +21,7 @@ header {position: absolute; left: 0; top: 0; width: 100%; padding: 40px 100px; d
 .toggle.active span::before {transform: translateY(3.5px) rotate(45deg); background: #fff;}
 .toggle span::after {content: ''; position: absolute; top: 23px; width: 30px; height: 3px; background: #777; transform: translateY(6px); transition: 0.5s;}
 .toggle.active span::after {transform: translateY(-3.5px) rotate(-45deg); background: #fff;}
-.btn {position: relative; display: inline-block; padding: 10px 20px; background: #ff1455; border-radius: 4px; color: #fff; font-weight: 500; letter-spacing: 1px;}
+.btn {position: relative; display: inline-block; padding: 10px 20px; background: #2196f3; border-radius: 4px; color: #fff; font-weight: 500; letter-spacing: 1px;}
 .sec .imgBx {position: relative; min-width: 600px; height: 600px; border-radius: 50%; overflow: hidden; margin-right: 60px;}
 .sec .content {max-width: 700px; margin-left: 40px;}
 .sec .content h2 {color: #777; font-weight: 500; letter-spacing: 1px;}

@@ -2,11 +2,12 @@ package kr.co.ac.service;
 
 import java.util.List;
 
+import kr.co.ac.pager.Pager;
 import kr.co.ac.vo.BoardVo;
 
 public interface BoardService {
 
-	List<BoardVo> selectBoardList();
+	List<BoardVo> selectBoardList(Pager pager);
 
 	void add(BoardVo item);
 

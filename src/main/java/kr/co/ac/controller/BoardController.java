@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.ac.pager.Pager;
 import kr.co.ac.service.BoardService;
 import kr.co.ac.vo.BoardVo;
 
@@ -24,18 +25,18 @@ public class BoardController {
 	
 	// 자유게시판
 	@GetMapping("/board")
-	String boardlist(BoardVo commVO, Model model) {
+	String boardlist(BoardVo commVO, Model model, Pager pager) {
 		// 공지 게시글
 		commVO.setBoardAt("Y"); // 공지글
 		// java.util.List
-		List<BoardVo> noticeResultList = boardservice.selectBoardList();
+		List<BoardVo> noticeResultList = boardservice.selectBoardList(pager);
 		model.addAttribute("noticeResultList", noticeResultList);
 
 		commVO.setBoardAt("N"); // 일반게시글
-		List<BoardVo> resultList = boardservice.selectBoardList();
+		List<BoardVo> resultList = boardservice.selectBoardList(pager);
 		model.addAttribute("resultList", resultList);
 		
-		List<BoardVo> boardlist = boardservice.selectBoardList();
+		List<BoardVo> boardlist = boardservice.selectBoardList(pager);
 		model.addAttribute("boardlist", boardlist);
 
 		return crud + path + "list";

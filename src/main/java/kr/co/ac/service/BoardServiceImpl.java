@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ac.dao.BoardDao;
+import kr.co.ac.pager.Pager;
 import kr.co.ac.vo.BoardVo;
 
 @Service
@@ -15,8 +16,9 @@ public class BoardServiceImpl implements BoardService {
 	BoardDao boarddao;
 	
 	@Override
-	public List<BoardVo> selectBoardList() {
-		return boarddao.boardlist();
+	public List<BoardVo> selectBoardList(Pager pager) {
+		int total = boarddao.total(pager);
+		return boarddao.boardlist(pager);
 	}
 
 	@Override

@@ -48,9 +48,9 @@
 
     <footer>
         <ul class="sci">
-            <li><a href="#"><img src="../resources/project/portfolio/face.png"></a></li>
-            <li><a href="#"><img src="../resources/project/portfolio/git2.png"></a></li>
-            <li><a href="#"><img src="../resources/project/portfolio/instar.png"></a></li>
+            <li><a href="https://ko-kr.facebook.com/"><img src="../resources/project/portfolio/face.png"></a></li>
+            <li><a href="https://github.com/JUNSUNG-KIM2546/ItNang"><img src="../resources/project/portfolio/git2.png"></a></li>
+            <li><a href="https://www.instagram.com/junnnmo3o/"><img src="../resources/project/portfolio/instar.png"></a></li>
         </ul>
         <p class="copyrightText">ⓒ2023 @JunnnMo3o </p>
     </footer>

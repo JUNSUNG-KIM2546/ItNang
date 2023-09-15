@@ -24,7 +24,7 @@
 
 	<div class="nav">
         <div class="logo">
-        	<a href="home"><img src="./resources/project/image/Logo/여기있냥.png" alt=""></a>
+        	<a href="homes"><img src="./resources/project/image/Logo/여기있냥.png" alt=""></a>
             
         </div>
         <div class="nav_but">

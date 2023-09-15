@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ac.pager.Pager;
 import kr.co.ac.vo.UsersVo;
 
 @Repository
@@ -20,8 +21,8 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public List<UsersVo> userslist() {
-		return sql.selectList("users.userslist");
+	public List<UsersVo> userslist(Pager pager) {
+		return sql.selectList("users.userslist", pager);
 	}
 
 	@Override
@@ -37,6 +38,11 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public void delete(String id) {
 		sql.delete("users.usersdelete", id);
+	}
+
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("users.total", pager);
 	}
 
 }
