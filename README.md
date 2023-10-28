@@ -6,4 +6,3 @@
 - <img src="https://img.shields.io/badge/Build-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/apache%20maven-%23C71A36.svg?&style=for-the-badge&logo=apache%20maven&logoColor=white" /><img src="https://img.shields.io/badge/2.5.1-515151?style=for-the-badge">
 - <img src="https://img.shields.io/badge/Language-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/java-%23ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"><img src="https://img.shields.io/badge/11-515151?style=for-the-badge">
 - <img src="https://img.shields.io/badge/Project Encoding-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/UTF 8-EA2328?style=for-the-badge">
-ItNang
