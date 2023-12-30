@@ -11,11 +11,11 @@ public interface UsersService {
 
 	List<UsersVo> selectUsersList(Pager pager);
 
-	UsersVo item(String id);
+	UsersVo item(Long NO);
 
 	void update(UsersVo item);
 
-	void delete(String id);
+	void delete(Long NO);
 
 
 }

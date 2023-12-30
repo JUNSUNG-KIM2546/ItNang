@@ -27,8 +27,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public UsersVo item(String id) {
-		return usersdao.item(id);
+	public UsersVo item(Long NO) {
+		return usersdao.item(NO);
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public void delete(String id) {
-		usersdao.delete(id);
+	public void delete(Long NO) {
+		usersdao.delete(NO);
 	}
 
 }

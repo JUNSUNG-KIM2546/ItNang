@@ -31,7 +31,7 @@
             <a href="main/Boast"><img src="./resources/project/image/menuimg/메뉴이미지1-3.png"> 냥이 자랑 </a>
             <a href="main/Recommend"><img src="./resources/project/image/menuimg/메뉴이미지2-3.png"> 추천게시판 </a>
             <a href="main/Sharing"><img src="./resources/project/image/menuimg/메뉴이미지3-3.png"> 나눔게시판 </a>
-            <a href="main/board"><img src="./resources/project/image/menuimg/메뉴이미지4-3.png"> 자유게시판 </a>
+            <a href="board/list"><img src="./resources/project/image/menuimg/메뉴이미지4-3.png"> 자유게시판 </a>
         </div>
         <div class="nav2_but">
             <a href="./Logins" onclick="window.open(this.href, '_blank', 'width=450, height=600'); return false;">로그인</a>

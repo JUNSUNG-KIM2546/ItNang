@@ -1,13 +1,13 @@
 package kr.co.ac.vo;
 
 public class BoardVo {
-
+	
+	//사용자 ID
+	private Long NO;
+	
 	//게시판 ID
 	private Long boardId;
 	
-	//사용자 ID
-	private String userId;
-		
 	//게시물 명
 	private String boardSj;
 		
@@ -15,7 +15,7 @@ public class BoardVo {
 	private String boardCn;
 		
 	//조회수
-	private int boardCo;
+	private Long boardCo;
 		
 	//등록자 IP
 	private String boardIp;
@@ -32,20 +32,20 @@ public class BoardVo {
 	//최종수정시점
 	private java.util.Date boardLast;
 
+	public Long getNO() {
+		return NO;
+	}
+
+	public void setNO(Long nO) {
+		NO = nO;
+	}
+
 	public Long getBoardId() {
 		return boardId;
 	}
 
 	public void setBoardId(Long boardId) {
 		this.boardId = boardId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getBoardSj() {
@@ -64,11 +64,11 @@ public class BoardVo {
 		this.boardCn = boardCn;
 	}
 
-	public int getBoardCo() {
+	public Long getBoardCo() {
 		return boardCo;
 	}
 
-	public void setBoardCo(int boardCo) {
+	public void setBoardCo(Long boardCo) {
 		this.boardCo = boardCo;
 	}
 
@@ -111,5 +111,4 @@ public class BoardVo {
 	public void setBoardLast(java.util.Date boardLast) {
 		this.boardLast = boardLast;
 	}
-		
 }

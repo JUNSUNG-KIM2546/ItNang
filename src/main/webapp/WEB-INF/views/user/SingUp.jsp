@@ -20,7 +20,7 @@
         <!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
         <form id="login-form" method="post">
         	<div class="idc">
-        		<input type="text"  placeholder="ID">
+        		<input type="text"  placeholder="ID" name="id">
         		<button type="button" id="check_id">중복확인</button>
         	</div>
             <input type="password" name="pass" placeholder="Password">

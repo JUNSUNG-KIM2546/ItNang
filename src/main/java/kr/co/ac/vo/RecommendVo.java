@@ -6,7 +6,7 @@ public class RecommendVo {
 	private Long recomId;
 	
 	//사용자 ID
-	private String userId;
+	private String NO;
 		
 	//게시물 명
 	private String recomSj;
@@ -40,12 +40,12 @@ public class RecommendVo {
 		this.recomId = recomId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getNO() {
+		return NO;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setNO(String nO) {
+		NO = nO;
 	}
 
 	public String getRecomSj() {
@@ -111,5 +111,5 @@ public class RecommendVo {
 	public void setRecomLast(java.util.Date recomLast) {
 		this.recomLast = recomLast;
 	}
-		
+	
 }

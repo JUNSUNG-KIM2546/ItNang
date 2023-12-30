@@ -41,10 +41,10 @@ public class BoardDaoImpl implements BoardDao {
 		sql.delete("board.boarddelete", boardId);
 		
 	}
-
-	@Override
+	
+	@Override 
 	public int total(Pager pager) {
-		return sql.selectOne("board.total", pager);
+		return sql.selectOne("board.total",pager); 
 	}
-
+	 
 }

@@ -10,7 +10,7 @@ public class RootController {
 	final String portfolio = "portfolio/";
 	
 	// 메인페이지
-	@GetMapping("/homes")
+	@GetMapping("/")
 	String home() {
 		return home + "home";
 	}

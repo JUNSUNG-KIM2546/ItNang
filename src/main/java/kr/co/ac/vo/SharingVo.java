@@ -6,7 +6,7 @@ public class SharingVo {
 	private Long sharingId;
 	
 	//사용자 ID
-	private String userId;
+	private String NO;
 		
 	//게시물 명
 	private String sharingSj;
@@ -32,7 +32,6 @@ public class SharingVo {
 	//최종수정시점
 	private java.util.Date sharingLast;
 
-	
 	public Long getSharingId() {
 		return sharingId;
 	}
@@ -41,12 +40,12 @@ public class SharingVo {
 		this.sharingId = sharingId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getNO() {
+		return NO;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setNO(String nO) {
+		NO = nO;
 	}
 
 	public String getSharingSj() {
@@ -112,6 +111,5 @@ public class SharingVo {
 	public void setSharingLast(java.util.Date sharingLast) {
 		this.sharingLast = sharingLast;
 	}
-
-		
+	
 }

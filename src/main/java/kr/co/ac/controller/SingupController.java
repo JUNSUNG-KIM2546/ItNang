@@ -49,16 +49,16 @@ public class SingupController {
 	
 	// 회원업데이트
 	@GetMapping("/UserUpdate/{id}")
-	String usersupdate(@PathVariable String id, Model model) {
-		UsersVo item = usersservice.item(id);
+	String usersupdate(@PathVariable Long NO, Model model) {
+		UsersVo item = usersservice.item(NO);
 		
 		model.addAttribute("item",item);
 		
 		return user + "Uupdate";
 	}	
 	@PostMapping("/UserUpdate/{id}")
-	String usersupdate(@PathVariable String id, UsersVo item) {
-		item.setId(id);
+	String usersupdate(@PathVariable Long NO, UsersVo item) {
+		item.setNO(NO);
 		
 		usersservice.update(item);
 		
@@ -68,8 +68,8 @@ public class SingupController {
 	
 	// 회원삭제
 	@GetMapping("/UserDelete/{id}")
-	String usersdelete(@PathVariable String id) {
-		usersservice.delete(id);
+	String usersdelete(@PathVariable Long NO) {
+		usersservice.delete(NO);
 			
 		return "redirect:../Ulist";
 	}

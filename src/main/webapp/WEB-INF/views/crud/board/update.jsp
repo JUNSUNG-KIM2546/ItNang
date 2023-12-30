@@ -26,7 +26,7 @@
 		<div>
 			<div>
 				<label>작성자:</label>
-				<input type="text" name="userId" value="${item.userId}" readonly>
+				<input type="text" name="NO" value="${item.NO}" readonly>
 			</div>
 			<div>
 				<label>제목:</label>

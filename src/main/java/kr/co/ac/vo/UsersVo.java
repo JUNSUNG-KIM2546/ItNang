@@ -3,6 +3,7 @@ package kr.co.ac.vo;
 import java.util.Date;
 
 public class UsersVo {
+	private Long NO;
 	private String id;
 	private String pass;
 	private String name;
@@ -11,6 +12,12 @@ public class UsersVo {
 	private java.util.Date sbscrbde;
 	private char admin;
 	
+	public Long getNO() {
+		return NO;
+	}
+	public void setNO(Long nO) {
+		NO = nO;
+	}
 	public String getId() {
 		return id;
 	}
@@ -41,10 +48,10 @@ public class UsersVo {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getSbscrbde() {
+	public java.util.Date getSbscrbde() {
 		return sbscrbde;
 	}
-	public void setSbscrbde(Date sbscrbde) {
+	public void setSbscrbde(java.util.Date sbscrbde) {
 		this.sbscrbde = sbscrbde;
 	}
 	public char getAdmin() {
@@ -53,5 +60,5 @@ public class UsersVo {
 	public void setAdmin(char admin) {
 		this.admin = admin;
 	}
-
+	
 }

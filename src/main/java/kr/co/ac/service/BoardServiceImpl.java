@@ -18,6 +18,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVo> selectBoardList(Pager pager) {
 		int total = boarddao.total(pager);
+		pager.setTotal(total);
 		return boarddao.boardlist(pager);
 	}
 

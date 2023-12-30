@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+						http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-		<property name="username" value="itnang"></property>
-		<property name="password" value="itnang"></property>
-	</bean>	
-	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+
+		<property name="jdbcUrl" value="jdbc:mariadb://127.0.0.1:3306/itnangproject_db"></property>
+		<property name="username" value="itnangproject_user"></property>
+		<property name="password" value="itnangproject_pass"></property>
+	</bean>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
-	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- Spring MVC 설정 -->
+	<mvc:annotation-driven>
+		<!-- Jackson JSON 메시지 컨버터 추가 -->
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+		
+	</mvc:annotation-driven>
+	
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="10485760" />
+      <property name="defaultEncoding" value="utf-8" />
+   </bean>
 	
 	
 	<!-- BOARD START -->	<!-- 호출하는 아이디(mySQL ID젠) -->

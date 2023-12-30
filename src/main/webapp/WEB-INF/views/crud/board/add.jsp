@@ -17,7 +17,7 @@
 		<div>
 			<div>
 				<label>작성자:</label>
-				<input type="text" name="userId">
+				<input type="text" name="NO">
 			</div>
 			
 			<div>
@@ -35,7 +35,7 @@
 			
 			<div>
 				<button>등록</button>
-				<a href="board"><button type="button">목록</button></a>
+				<a href="list"><button type="button">목록</button></a>
 			</div>
 		</div>
 		</form>

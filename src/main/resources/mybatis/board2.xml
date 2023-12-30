@@ -10,6 +10,7 @@
 	
 	<sql id="search">
 		SELECT * FROM board 
+		<if test="search != 0">
 			<where>
 				<if test="search == 1">
 					BOARD_ID = #{keyword}
@@ -18,6 +19,8 @@
 					BOARD_SJ LIKE CONCAT('%', #{keyword}, '%')
 				</if>
 			</where>
+		</if>
+		
 		ORDER BY BOARD_ID DESC
 	</sql>
 	
@@ -51,21 +54,15 @@
 			BOARD_SJ,
 			BOARD_CN,
 			BOARD_CO,
-			BOARD_IP,
-			BOARD_AT,
 			BOARD_IMG,
-			BOARD_FRST,
-			BOARD_LAST
+			BOARD_FRST
 		)
 		VALUES (
 			#{NO},
 			#{boardSj},
 			#{boardCn},
 			0,
-			'TEST_IP',
-			'N',
 			#{boardImg},
-			NOW(),
 			NOW()
 		)
 	</insert>

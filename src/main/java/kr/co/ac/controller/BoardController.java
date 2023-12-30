@@ -15,7 +15,7 @@ import kr.co.ac.service.BoardService;
 import kr.co.ac.vo.BoardVo;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/board")
 public class BoardController {
 	final String crud = "crud/";
 	final String path = "board/";
@@ -24,17 +24,8 @@ public class BoardController {
 	BoardService boardservice;
 	
 	// 자유게시판
-	@GetMapping("/board")
-	String boardlist(BoardVo commVO, Model model, Pager pager) {
-		// 공지 게시글
-		commVO.setBoardAt("Y"); // 공지글
-		// java.util.List
-		List<BoardVo> noticeResultList = boardservice.selectBoardList(pager);
-		model.addAttribute("noticeResultList", noticeResultList);
-
-		commVO.setBoardAt("N"); // 일반게시글
-		List<BoardVo> resultList = boardservice.selectBoardList(pager);
-		model.addAttribute("resultList", resultList);
+	@GetMapping("/list")
+	String boardlist(BoardVo  boardVo, Model model, Pager pager) {
 		
 		List<BoardVo> boardlist = boardservice.selectBoardList(pager);
 		model.addAttribute("boardlist", boardlist);
@@ -50,7 +41,7 @@ public class BoardController {
 	@PostMapping("/add")
 	String boardadd(BoardVo item) {
 		boardservice.add(item);
-		return "redirect:/main/board";
+		return "redirect:/board/list";
 		//리다이렉트
 	}
 	

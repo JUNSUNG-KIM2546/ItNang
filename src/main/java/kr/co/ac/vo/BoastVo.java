@@ -6,7 +6,7 @@ public class BoastVo {
 	private Long boastId;
 	
 	//사용자 ID
-	private String userId;
+	private String NO;
 		
 	//게시물 명
 	private String boastSj;
@@ -40,12 +40,12 @@ public class BoastVo {
 		this.boastId = boastId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getNO() {
+		return NO;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setNO(String nO) {
+		NO = nO;
 	}
 
 	public String getBoastSj() {

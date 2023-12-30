@@ -26,8 +26,8 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public UsersVo item(String id) {
-		return sql.selectOne("users.item", id);
+	public UsersVo item(Long NO) {
+		return sql.selectOne("users.item", NO);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public void delete(String id) {
-		sql.delete("users.usersdelete", id);
+	public void delete(Long NO) {
+		sql.delete("users.usersdelete", NO);
 	}
 
 	@Override

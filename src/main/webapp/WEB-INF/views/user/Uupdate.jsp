@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<div>
-			<h3> 게시물 수정 </h3>
+			<h3> 회원 게시물 수정 </h3>
 		</div>
 		
 		<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
@@ -26,7 +26,7 @@
 		<div>
 			<div>
 				<label>작성자:</label>
-				<input type="text" name="userId" value="${item.userId}" readonly>
+				<input type="text" name="id" value="${item.id}" readonly>
 			</div>
 			<div>
 				<label>제목:</label>

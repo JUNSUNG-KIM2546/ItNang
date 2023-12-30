@@ -5,6 +5,7 @@
 
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
 	<resultMap type="kr.co.ac.vo.UsersVo" id="userVo">
+		<result property="NO" column="NO"/>
 		<result property="id" column="ID"/>
 		<result property="pass" column="PASS"/>
 		<result property="name" column="NAME"/>
@@ -62,7 +63,7 @@
 			#{name},
 			#{email},
 			#{phone},
-			SYSDATE
+			NOW()
 		)
 	</insert>
 	

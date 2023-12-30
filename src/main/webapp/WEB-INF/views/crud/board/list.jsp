@@ -20,10 +20,29 @@
 		<div>
 			<h3><a href="?page=1"> 자유게시판 </a></h3>
 		</div>
+		<div>
+			<form>
+				<div class="row mb-2"> <!-- 그리드 총 크기는 12 -->
+					<div class="col-6"></div>	<!-- 빈 div를 만들어 공간처리 -->
+					<div class="col-2">
+						<select name="search" class="form-select form-select-sm">
+							<option value="0" > 검색 항목을 선택하세요 </option>
+							<option value="1" ${pager.search == 1 ? "selected" : ""}> 글번호 </option>
+							<option value="2" ${pager.search == 2 ? "selected" : ""}> 제목 </option>
+						</select>
+					</div>					
+					<div class="col">
+						<input type="text" name="keyword" class="form-control form-control-sm" value="${pager.keyword}">
+					</div>					
+					<div class="col-1 d-grid">
+						<button class="btn btn-sm btn-primary"> 검색 </button>
+					</div>
+				</div>
+			</form>
+		</div>
 		
 		<div>
 			<table class="table table-striped table-hover" border="1">
-			
 				<thead class="table-dark">
 					<tr>
 						<th> 말머리 </th>
@@ -37,11 +56,11 @@
 				</thead>
 				
 				<tbody>
-					<c:forEach var="item" items="${boardlist}">
+					<c:forEach var="item" items="${boardlist}">           
 						<tr>
 							<th> ${item.boardId} </th>
 							<th> ${item.boardSj} </th>
-							<th> ${item.userId} </th>
+							<th> ${item.NO} </th>
 							<th> <fmt:formatDate value="${item.boardFrst}" pattern="yyyy.MM.dd"/> </th>
 							<th> <fmt:formatDate value="${item.boardLast}" pattern="yyyy.MM.dd"/> </th>
 							<th> ${item.boardCo} </th>
@@ -49,6 +68,24 @@
 						</tr>
 					</c:forEach>
 				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"><a class="page-link" href="?page=${pager.first}">처음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back2}">이이전</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back}">이전</a></li>
+								<c:forEach var="page" items="${pager.list}">
+									<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}">${page}</a></li>
+								</c:forEach>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}">다음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next2}">다다음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
+							</ul>
+						</td>
+					</tr>
+				</tfoot>
 					
 			</table>
 		</div>
