@@ -10,25 +10,27 @@
 	
 	<sql id="search">
 		SELECT * FROM board 
-			<where>
-				<if test="search == 1">
-					BOARD_ID = #{keyword}
-				</if>
-				<if test="search == 2">
-					BOARD_SJ LIKE CONCAT('%', #{keyword}, '%')
-				</if>
-			</where>
-		ORDER BY BOARD_ID DESC
+		<where>
+			<if test="search == 1">
+				BOARD_ID = #{keyword}
+			</if>
+			<if test="search == 2">
+				BOARD_SJ LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
 	</sql>
 	
 	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM (<include refid="search"></include>)
+		SELECT COUNT(*) FROM (<include refid="search"></include>) co
 	</select>
 	
 	<select id="boardlist" resultType="BoardVo">
-		SELECT *  
-		FROM BOARD
-		ORDER BY BOARD_ID DESC
+		SELECT lists.*  
+		FROM (<include refid="search"></include>) lists
+		ORDER BY BOARD_FRST DESC
+		LIMIT ${perPage}
+		OFFSET ${offset}
+		
 	</select>
 	
 	<select id="item" resultType="BoardVo">

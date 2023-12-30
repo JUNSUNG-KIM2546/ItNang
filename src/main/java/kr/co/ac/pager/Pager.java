@@ -5,12 +5,21 @@ import java.util.List;
 
 public class Pager {
 	private int page = 1;
-	private int perPage = 10;
+	private int perPage = 5;
 	private float total;
-	private int perGroup = 5;
+	private int perGroup = 3;
+	public int offset;
 	
 	private int search;
 	private String keyword;
+	
+	public int getOffset() {
+		return (page-1)*perPage;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	
 	public String getQuery() {
 		String queryString = "";
@@ -106,7 +115,7 @@ public class Pager {
 		List<Integer> list = new ArrayList<Integer>();
 		
 		int startPage = (((page - 1) / perGroup) + 0) * perGroup + 1;
-		
+		                      
 		for(int i = startPage; i < (startPage + perGroup) && i <= getLast(); i++) {
 			list.add(i);
 		}

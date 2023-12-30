@@ -42,7 +42,7 @@
 			</div>
 			<div>
 				<button>변경</button>
-				<a href="../board"><button type="button">목록</button></a>
+				<a href="../list"><button type="button">목록</button></a>
 			</div>
 		</div>
 		</form>

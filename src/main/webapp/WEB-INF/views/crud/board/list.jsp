@@ -74,13 +74,13 @@
 						<td colspan="5">
 							<ul class="pagination justify-content-center">
 								<li class="page-item"><a class="page-link" href="?page=${pager.first}">처음</a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.back2}">이이전</a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.back}">이전</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back2}"> << </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back}"> < </a></li>
 								<c:forEach var="page" items="${pager.list}">
 									<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}">${page}</a></li>
 								</c:forEach>
-								<li class="page-item"><a class="page-link" href="?page=${pager.next}">다음</a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.next2}">다다음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}"> > </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next2}"> >> </a></li>
 								<li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
 							</ul>
 						</td>
