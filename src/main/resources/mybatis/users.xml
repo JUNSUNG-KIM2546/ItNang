@@ -4,7 +4,7 @@
 <mapper namespace="users">
 
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
-	<resultMap type="kr.co.ac.vo.UsersVo" id="userVo">
+	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
 		<result property="NO" column="NO"/>
 		<result property="id" column="ID"/>
 		<result property="pass" column="PASS"/>
@@ -32,7 +32,7 @@
 		SELECT COUNT(*) FROM (<include refid="search"></include>)
 	</select>
 	
-	<select id="userslist" resultMap="userVo">
+	<select id="userslist" resultMap="usersVO">
 		SELECT *
 		FROM (SELECT sub.*, ROWNUM rnum FROM (<include refid="search"></include>) sub)
 		
@@ -42,7 +42,7 @@
 		]]>
 	</select>
 	
-	<select id="item" resultMap="userVo">
+	<select id="item" resultMap="usersVO">
 		SELECT *
 		FROM users
 		WHERE id = #{id}

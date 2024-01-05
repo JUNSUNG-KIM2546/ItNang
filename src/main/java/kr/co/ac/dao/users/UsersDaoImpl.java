@@ -1,4 +1,4 @@
-package kr.co.ac.dao;
+package kr.co.ac.dao.users;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.ac.pager.Pager;
-import kr.co.ac.vo.UsersVo;
+import kr.co.ac.vo.UsersVO;
 
 @Repository
 public class UsersDaoImpl implements UsersDao {
@@ -16,22 +16,22 @@ public class UsersDaoImpl implements UsersDao {
 	SqlSession sql;
 
 	@Override
-	public void singup(UsersVo item) {
+	public void singup(UsersVO item) {
 		sql.insert("users.singup", item);
 	}
 
 	@Override
-	public List<UsersVo> userslist(Pager pager) {
+	public List<UsersVO> userslist(Pager pager) {
 		return sql.selectList("users.userslist", pager);
 	}
 
 	@Override
-	public UsersVo item(Long NO) {
+	public UsersVO item(Long NO) {
 		return sql.selectOne("users.item", NO);
 	}
 
 	@Override
-	public void update(UsersVo item) {
+	public void update(UsersVO item) {
 		sql.update("users.usersupdate", item);
 	}
 

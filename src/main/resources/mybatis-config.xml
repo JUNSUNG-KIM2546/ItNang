@@ -10,8 +10,8 @@
 	
 	<!-- Alias 설정 (vo) -->
 	<typeAliases>
-		<typeAlias type="kr.co.ac.vo.BoardVo" alias="BoardVo"/>
-		<typeAlias type="kr.co.ac.vo.UsersVo" alias="UsersVo"/>
+		<typeAlias type="kr.co.ac.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="kr.co.ac.vo.UsersVO" alias="UsersVO"/>
 		<!-- 모델(겟터스 / 셋터스) 불러오기 -->
 		<!-- <typeAlias type="kr.co.ac.booktest.model.Book" alias="Book"/> -->
 	</typeAliases>

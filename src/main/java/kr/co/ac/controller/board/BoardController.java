@@ -1,4 +1,4 @@
-package kr.co.ac.controller;
+package kr.co.ac.controller.board;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.ac.pager.Pager;
-import kr.co.ac.service.BoardService;
-import kr.co.ac.vo.BoardVo;
+import kr.co.ac.service.board.BoardService;
+import kr.co.ac.vo.BoardVO;
 
 @Controller
 @RequestMapping("/board")
@@ -25,9 +25,9 @@ public class BoardController {
 	
 	// 자유게시판
 	@GetMapping("/list")
-	String boardlist(BoardVo  boardVo, Model model, Pager pager) {
+	String boardlist(BoardVO  boardVo, Model model, Pager pager) {
 		
-		List<BoardVo> boardlist = boardservice.selectBoardList(pager);
+		List<BoardVO> boardlist = boardservice.selectBoardList(pager);
 		model.addAttribute("boardlist", boardlist);
 
 		return crud + path + "list";
@@ -39,7 +39,7 @@ public class BoardController {
 		return crud + path + "add";
 	}
 	@PostMapping("/add")
-	String boardadd(BoardVo item) {
+	String boardadd(BoardVO item) {
 		boardservice.add(item);
 		return "redirect:/board/list";
 		//리다이렉트
@@ -48,19 +48,19 @@ public class BoardController {
 	// 자유게시판 업데이트
 	@GetMapping("/update/{boardId}")
 	String boardupdate(@PathVariable Long boardId, Model model) {
-		BoardVo item = boardservice.item(boardId);
+		BoardVO item = boardservice.item(boardId);
 		
 		model.addAttribute("item",item);
 		
 		return crud + path + "update";
 	}
 	@PostMapping("/update/{boardId}")
-	String boardupdate(@PathVariable Long boardId, BoardVo item) {
+	String boardupdate(@PathVariable Long boardId, BoardVO item) {
 		item.setBoardId(boardId);
 		
 		boardservice.update(item);
 		
-		return "redirect:../board";
+		return "redirect:/board/list";
 		//book/update/13 -> "redirect:list" -> /book/update/list
 	}
 		
@@ -69,7 +69,7 @@ public class BoardController {
 	String boarddelete(@PathVariable Long boardId) {
 		boardservice.delete(boardId);
 			
-		return "redirect:../board";
+		return "redirect:/board/list";
 	}
 
 }

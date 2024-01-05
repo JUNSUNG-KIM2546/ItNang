@@ -1,4 +1,4 @@
-package kr.co.ac.controller;
+package kr.co.ac.controller.users;
 
 import java.util.List;
 
@@ -10,54 +10,56 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ac.pager.Pager;
-import kr.co.ac.service.UsersService;
-import kr.co.ac.vo.UsersVo;
+import kr.co.ac.service.users.UsersService;
+import kr.co.ac.vo.UsersVO;
 
 @Controller
-public class SingupController {
-	final String user = "user/";
+public class UsersController {
+	final String users = "users/";
 	
 	@Autowired
 	UsersService usersservice;
 		
+	
 	// 로그인창
-	@GetMapping("/Logins")
-	String Login() {
-		return user + "Login";
-	}
+	//@GetMapping("/Logins")
+	//String Login() {
+	//	return users + "Login";
+	//}
+	
 		
-	// 회원가입창
-	@GetMapping("/SingUps")
+	// 회원가입창(모달창)
+	@GetMapping("/SignUps")
 	String SingUp() {
-		return user +  "SingUp";
+		return users +  "SignUp";
 	}
 	@PostMapping("/SingUps")
-	String SingUp(UsersVo item) {
+	String SingUp(UsersVO item) {
 		usersservice.SingUp(item);
-		return "redirect:hello";
+		return "redirect:/";
 		//리다이렉트
 	}
 	
 	// 회원리스트
 	@GetMapping("/UsersList")
 	String userslist(Model model, Pager pager) {
-		List<UsersVo> userslist = usersservice.selectUsersList(pager);
+		List<UsersVO> userslist = usersservice.selectUsersList(pager);
 		model.addAttribute("userslist", userslist);
 		
-		return user + "Ulist";
+		return users + "Ulist";
 	}
 	
 	// 회원업데이트
 	@GetMapping("/UserUpdate/{id}")
 	String usersupdate(@PathVariable Long NO, Model model) {
-		UsersVo item = usersservice.item(NO);
+		UsersVO item = usersservice.item(NO);
 		
 		model.addAttribute("item",item);
 		
-		return user + "Uupdate";
+		return users + "Uupdate";
 	}	
 	@PostMapping("/UserUpdate/{id}")
-	String usersupdate(@PathVariable Long NO, UsersVo item) {
+	String usersupdate(@PathVariable Long NO, UsersVO item) {
 		item.setNO(NO);
 		
 		usersservice.update(item);

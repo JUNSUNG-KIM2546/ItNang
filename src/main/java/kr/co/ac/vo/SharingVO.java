@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class SharingVo {
+public class SharingVO {
 
 	//게시판 ID
 	private Long sharingId;

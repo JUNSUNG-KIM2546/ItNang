@@ -1,13 +1,13 @@
-package kr.co.ac.service;
+package kr.co.ac.service.users;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.ac.dao.UsersDao;
+import kr.co.ac.dao.users.UsersDao;
 import kr.co.ac.pager.Pager;
-import kr.co.ac.vo.UsersVo;
+import kr.co.ac.vo.UsersVO;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -16,23 +16,23 @@ public class UsersServiceImpl implements UsersService {
 	UsersDao usersdao;
 
 	@Override
-	public void SingUp(UsersVo item) {
+	public void SingUp(UsersVO item) {
 		usersdao.singup(item);
 	}
 
 	@Override
-	public List<UsersVo> selectUsersList(Pager pager) {
+	public List<UsersVO> selectUsersList(Pager pager) {
 		int total = usersdao.total(pager);
 		return usersdao.userslist(pager);
 	}
 
 	@Override
-	public UsersVo item(Long NO) {
+	public UsersVO item(Long NO) {
 		return usersdao.item(NO);
 	}
 
 	@Override
-	public void update(UsersVo item) {
+	public void update(UsersVO item) {
 		usersdao.update(item);
 	}
 

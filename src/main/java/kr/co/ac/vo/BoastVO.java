@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class BoastVo {
+public class BoastVO {
 
 	//게시판 ID
 	private Long boastId;

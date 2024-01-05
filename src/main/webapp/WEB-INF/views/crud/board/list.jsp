@@ -5,21 +5,20 @@
 <!DOCTYPE html>
 <html>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> 있냥?!(자유게시판) </title>
+
 </head>
-	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
+
+<jsp:include page="../../head.jsp"></jsp:include>
+
+<jsp:include page="../../nav.jsp"></jsp:include>
+
+<title> 있냥?!(자유게시판) </title>
 <body>
 	
 	<div class="container">
-		<div>
-			<h3><a href="?page=1"> 자유게시판 </a></h3>
-		</div>
 		<div>
 			<form>
 				<div class="row mb-2"> <!-- 그리드 총 크기는 12 -->
@@ -45,7 +44,7 @@
 			<table class="table table-striped table-hover" border="1">
 				<thead class="table-dark">
 					<tr>
-						<th> 말머리 </th>
+						<th> 글번호 </th>
 						<th> 제목 </th>
 						<th> 작성자 </th>
 						<th> 작성일 </th>
@@ -73,7 +72,7 @@
 					<tr>
 						<td colspan="5">
 							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link" href="?page=${pager.first}">처음</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.first}"> | </a></li>
 								<li class="page-item"><a class="page-link" href="?page=${pager.back2}"> << </a></li>
 								<li class="page-item"><a class="page-link" href="?page=${pager.back}"> < </a></li>
 								<c:forEach var="page" items="${pager.list}">
@@ -81,7 +80,7 @@
 								</c:forEach>
 								<li class="page-item"><a class="page-link" href="?page=${pager.next}"> > </a></li>
 								<li class="page-item"><a class="page-link" href="?page=${pager.next2}"> >> </a></li>
-								<li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.last}"> | </a></li>
 							</ul>
 						</td>
 					</tr>
@@ -96,9 +95,11 @@
 		
 			<a href="init" class="btn btn-danger btn-sm"> 초기화 </a> -->
 			
-			<a href="../homes" class="btn btn-secondary btn-sm">이전으로</a>
+			<a href="../" class="btn btn-secondary btn-sm">이전으로</a>
 		</div>
 	</div>
+	
+	<jsp:include page="../../footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -1,16 +1,14 @@
 package kr.co.ac.vo;
 
-import java.util.Date;
-
-public class UsersVo {
-	private Long NO;
-	private String id;
-	private String pass;
-	private String name;
-	private String email;
-	private String phone;
-	private java.util.Date sbscrbde;
-	private char admin;
+public class UsersVO {
+	private Long NO;		// 회원 번호
+	private String id;		// 회원 아이디
+	private String pass;	// 회원 비밀번호
+	private String name;	// 회원 이름
+	private String email;	// 회원 이메일
+	private String phone;	// 회원 연락처
+	private java.util.Date sbscrbde;	// 회원 가입일자
+	private String admin;	// UseAt
 	
 	public Long getNO() {
 		return NO;
@@ -54,10 +52,10 @@ public class UsersVo {
 	public void setSbscrbde(java.util.Date sbscrbde) {
 		this.sbscrbde = sbscrbde;
 	}
-	public char getAdmin() {
+	public String getAdmin() {
 		return admin;
 	}
-	public void setAdmin(char admin) {
+	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
 	

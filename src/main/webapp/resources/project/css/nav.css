@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');   /* 메뉴 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');   /* 헤더 타이틀 h1 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');   /* 헤더 타이틀 p 폰트 */
+/* https://fonts.google.com/?subset=korean&noto.script=Kore  폰트 스타일 */
 
 /* 네비 */
 .nav{
@@ -82,25 +83,25 @@
 
 
 /* 인트로 */
-.intro{
+.introyo{
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: auto;
 }
-.intro .card{
+.introyo .cardyo{
     flex: 1;                                            /* 1:1:1 로 맞춤 */
     text-align: center;
     margin: 150px 40px;
 }
-.intro .card img{
+.introyo .cardyo img{
     margin-bottom: auto;
 }
-.intro .card h1{
+.introyo .cardyo h1{
     letter-spacing: 0.2em;
 }
-.intro .card p{
+.introyo .cardyo p{
     font-size: 12px;
 }
 

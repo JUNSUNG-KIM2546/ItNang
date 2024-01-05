@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class RecommendVo {
+public class RecommendVO {
 
 	//게시판 ID
 	private Long recomId;

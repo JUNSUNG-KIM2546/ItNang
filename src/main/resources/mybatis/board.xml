@@ -4,7 +4,7 @@
 <mapper namespace="board">
 	
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
-	<resultMap type="kr.co.ac.vo.BoardVo" id="boardVo">
+	<resultMap type="kr.co.ac.vo.BoardVO" id="boardVO">
 		<result property="NO" column="NO"/>
 	</resultMap>
 	
@@ -24,7 +24,7 @@
 		SELECT COUNT(*) FROM (<include refid="search"></include>) co
 	</select>
 	
-	<select id="boardlist" resultType="BoardVo">
+	<select id="boardlist" resultType="BoardVO">
 		SELECT lists.*  
 		FROM (<include refid="search"></include>) lists
 		ORDER BY BOARD_FRST DESC
@@ -33,7 +33,7 @@
 		
 	</select>
 	
-	<select id="item" resultType="BoardVo">
+	<select id="item" resultType="BoardVO">
 		SELECT BOARD_ID,
 			   NO,
 	   		   BOARD_SJ,
@@ -75,7 +75,7 @@
 	<update id="boardupdate">
 		UPDATE board
 		SET BOARD_SJ = #{boardSj}, BOARD_CN = #{boardCn}, BOARD_IMG = #{boardImg}, BOARD_LAST = NOW()
-		WHERE NO = #{UsersVo.NO} AND BOARD_ID = #{boardId}
+		WHERE NO = #{UsersVO.NO} AND BOARD_ID = #{boardId}
 	</update>
 	
 	<delete id="boarddelete">
