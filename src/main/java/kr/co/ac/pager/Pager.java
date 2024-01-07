@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Pager {
 	private int page = 1;
-	private int perPage = 5;
+	private int perPage = 10;
 	private float total;
-	private int perGroup = 3;
+	private int perGroup = 5;
 	public int offset;
 	
 	private int search;

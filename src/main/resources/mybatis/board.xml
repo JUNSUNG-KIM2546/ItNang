@@ -17,6 +17,9 @@
 			<if test="search == 2">
 				BOARD_SJ LIKE CONCAT('%', #{keyword}, '%')
 			</if>
+			<if test="search == 3">
+				BOARD_SJ LIKE CONCAT('%', #{keyword}, '%')
+			</if>
 		</where>
 	</sql>
 	
@@ -30,7 +33,6 @@
 		ORDER BY BOARD_FRST DESC
 		LIMIT ${perPage}
 		OFFSET ${offset}
-		
 	</select>
 	
 	<select id="item" resultType="BoardVO">

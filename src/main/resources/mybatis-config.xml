@@ -19,6 +19,7 @@
 	<mappers>
 		<mapper resource="mybatis/board.xml"/>
 		<mapper resource="mybatis/users.xml"/>
+		<mapper resource="mybatis/login.xml"/>
 	</mappers>
 	
 </configuration>

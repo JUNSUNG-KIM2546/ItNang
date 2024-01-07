@@ -11,14 +11,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> 있냥?!(자유게시판) </title>
+<title> 있냥?!(유저관리) </title>
 </head>
 	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
 <body>
 	
 	<div class="container">
 		<div>
-			<h3><a href="?page=1"> 자유게시판 </a></h3>
+			<h3><a href="?page=1"> 유저관리 </a></h3>
+		</div>
+		
+		<div>
+			<form>
+				<div class="row mb-2"> <!-- 그리드 총 크기는 12 -->
+					<div class="col-6"></div>	<!-- 빈 div를 만들어 공간처리 -->
+					<div class="col-2">
+						<select name="search" class="form-select form-select-sm">
+							<option value="0" > 검색 항목을 선택하세요 </option>
+							<option value="1" ${pager.search == 1 ? "selected" : ""}> 아이디 </option>
+							<option value="2" ${pager.search == 2 ? "selected" : ""}> 성명 </option>
+							<option value="3" ${pager.search == 2 ? "selected" : ""}> E-Mail </option>
+							<option value="4" ${pager.search == 2 ? "selected" : ""}> 전화번호 </option>
+							<option value="5" ${pager.search == 3 ? "selected" : ""}> 권한 </option>
+						</select>
+					</div>					
+					<div class="col">
+						<input type="text" name="keyword" class="form-control form-control-sm" value="${pager.keyword}">
+					</div>					
+					<div class="col-1 d-grid">
+						<button class="btn btn-sm btn-primary"> 검색 </button>
+					</div>
+				</div>
+			</form>
 		</div>
 		
 		<div>
@@ -26,6 +50,7 @@
 			
 				<thead class="table-dark">
 					<tr>
+						<th> No </th>
 						<th> ID </th>
 						<th> PW </th>
 						<th> 성명 </th>
@@ -40,6 +65,7 @@
 				<tbody>
 					<c:forEach var="item" items="${userslist}">
 						<tr>
+							<th> ${item.NO} </th>
 							<th> ${item.id} </th>
 							<th> ${item.pass} </th>
 							<th> ${item.name} </th>
@@ -51,6 +77,24 @@
 						</tr>
 					</c:forEach>
 				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"><a class="page-link" href="?page=${pager.first}"> | </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back2}"> << </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.back}"> < </a></li>
+								<c:forEach var="page" items="${pager.list}">
+									<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}">${page}</a></li>
+								</c:forEach>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}"> > </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next2}"> >> </a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.last}"> | </a></li>
+							</ul>
+						</td>
+					</tr>
+				</tfoot>
 					
 			</table>
 		</div>
@@ -61,7 +105,7 @@
 		
 			<a href="init" class="btn btn-danger btn-sm"> 초기화 </a> -->
 			
-			<a href="../homes" class="btn btn-secondary btn-sm">이전으로</a>
+			<a href="/" class="btn btn-secondary btn-sm">이전으로</a>
 		</div>
 	</div>
 

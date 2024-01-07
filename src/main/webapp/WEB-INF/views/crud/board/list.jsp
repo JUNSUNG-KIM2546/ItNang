@@ -28,6 +28,7 @@
 							<option value="0" > 검색 항목을 선택하세요 </option>
 							<option value="1" ${pager.search == 1 ? "selected" : ""}> 글번호 </option>
 							<option value="2" ${pager.search == 2 ? "selected" : ""}> 제목 </option>
+							<option value="3" ${pager.search == 3 ? "selected" : ""}> 작성자 </option>
 						</select>
 					</div>					
 					<div class="col">

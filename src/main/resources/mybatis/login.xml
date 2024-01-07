@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login">
+
+	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
+	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
+		<result property="NO" column="NO"/>
+		<result property="id" column="ID"/>
+		<result property="pass" column="PASS"/>
+		<result property="name" column="NAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="sbscrbde" column="SBSCRBDE"/>
+		<result property="admin" column="ADMIN"/>
+	</resultMap>
+	
+	<select id="actionLogin" resultMap="usersVO">
+		SELECT
+			NO,
+			ID,
+			PASS,
+			NAME,
+			EMAIL,
+			PHONE,
+			ADMIN
+		FROM USERS
+		WHERE ID = #{id}
+			AND PASS = #{pass}
+	</select>
+</mapper>

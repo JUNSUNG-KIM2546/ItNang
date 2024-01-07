@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.ac.service.login.LoginService;
 import kr.co.ac.service.users.UsersService;
@@ -43,10 +42,10 @@ public class LoginController {
 		
 		return users + "Login";
 	};
-	
+
+	/* 일반 회원 로그인 */
 	@PostMapping("/actionLogin")
-	public String actionLogin(@ModelAttribute UsersVO usersVO, 
-			Model model, HttpSession session, HttpServletResponse response) {
+	public String actionLogin(@ModelAttribute UsersVO usersVO, Model model, HttpSession session, HttpServletResponse response) {
 		
 			// 일반 사용자 로그인
 	        UsersVO loginVO = loginService.actionLogin(usersVO);
@@ -55,18 +54,18 @@ public class LoginController {
             String prevPage = (String) session.getAttribute("prevPage");
 	        if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("") && !loginVO.getPhone().equals("kakao가입자")) {
 	            session.setAttribute("loginVO", loginVO);
-	            if(loginVO.getAdmin().equals("A")) {
-	            	return "redirect:/admin";
-	            }
+	            
 	            if (prevPage != null && !prevPage.isEmpty()) {
 	                // 이전 페이지가 있는 경우 해당 페이지로 리다이렉트
 	                session.removeAttribute("prevPage"); // 세션에서 이전 페이지 URL 제거
 	                return "redirect:" + prevPage;
-	            } else {
-	                // 이전 페이지가 없는 경우 기본 리다이렉트 URL 설정
+	            } 
+	            else { 
+	            	// 이전 페이지가 없는 경우 기본 리다이렉트 URL 설정
 	                return "redirect:/";
 	            }
-	        } else {
+	        } 
+	        else {
 	            model.addAttribute("loginMessage", "로그인 정보가 올바르지 않습니다.");
 				return "redirect:/login";
 	    }
@@ -79,7 +78,8 @@ public class LoginController {
 		usersVO.setPass(usersVO.getId());
 		UsersVO loginVO = loginService.actionLogin(usersVO);
 	    if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("") && loginVO.getPhone().equals("kakao가입자")) {
-	        // 값이 있다면 로그인을 수행
+	        
+	    	// 값이 있다면 로그인을 수행
 	        if (loginVO.getId() != null && loginVO.getName() != null) {
 	            session.setAttribute("loginVO", loginVO);
 	           
@@ -90,11 +90,13 @@ public class LoginController {
 	                // 이전 페이지가 있는 경우 해당 페이지로 리다이렉트
 	                session.removeAttribute("prevPage"); // 세션에서 이전 페이지 URL 제거
 	                return "redirect:" + prevPage;
-	            } else {
+	            } 
+	            else {
 	                // 이전 페이지가 없는 경우 기본 리다이렉트 URL 설정
 	                return "redirect:/";
 	            }
-	        } else {
+	        } 
+	        else {
 	            model.addAttribute("loginMessage", "로그인 정보가 올바르지 않습니다.");
 	            return "redirect:/login";
 	        }

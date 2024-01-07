@@ -2,6 +2,8 @@ package kr.co.ac.controller.board;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.ac.controller.login.LoginController;
 import kr.co.ac.pager.Pager;
 import kr.co.ac.service.board.BoardService;
 import kr.co.ac.vo.BoardVO;
@@ -19,7 +22,7 @@ import kr.co.ac.vo.BoardVO;
 public class BoardController {
 	final String crud = "crud/";
 	final String path = "board/";
-	
+	//private static final Logger logger = LoggerFactory.getLogger(LoginController.class); 
 	@Autowired
 	BoardService boardservice;
 	
@@ -29,6 +32,7 @@ public class BoardController {
 		
 		List<BoardVO> boardlist = boardservice.selectBoardList(pager);
 		model.addAttribute("boardlist", boardlist);
+		//logger.debug("log", boardlist);
 
 		return crud + path + "list";
 	}

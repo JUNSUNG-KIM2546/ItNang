@@ -22,30 +22,57 @@
 				id = #{keyword}
 			</if>
 			<if test="search == 2">
-				name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+				name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="search == 3">
+				email LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="search == 4">
+				phone LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="search == 5">
+				admin LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 		</where>
 		ORDER BY id
 	</sql>
 	
 	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM (<include refid="search"></include>)
+		SELECT COUNT(*) FROM (<include refid="search"></include>) co	<!-- 알리아스 꼭 해줘야 한다 -->
 	</select>
 	
+	<select id="userslist" resultType="UsersVO">
+		SELECT lists.*  
+		FROM (<include refid="search"></include>) lists
+		ORDER BY SBSCRBDE DESC
+		LIMIT ${perPage}
+		OFFSET ${offset}
+	</select>
+	
+	<!--
 	<select id="userslist" resultMap="usersVO">
 		SELECT *
 		FROM (SELECT sub.*, ROWNUM rnum FROM (<include refid="search"></include>) sub)
 		
-		<!-- 씨데이타 = 여기있는것은 문법검사를 하지마! 오류가 나도 오류가 검출되지않음 -->
+		씨데이타 = 여기있는것은 문법검사를 하지마! 오류가 나도 오류가 검출되지않음
 		<![CDATA[
 		WHERE rnum > ((#{page} - 1) * #{perPage}) AND rnum <= (#{page} * #{perPage})
 		]]>
+	</select> 
+	-->
+	
+	<select id="boardlist" resultType="BoardVO">
+		SELECT lists.*  
+		FROM (<include refid="search"></include>) lists
+		ORDER BY BOARD_FRST DESC
+		LIMIT ${perPage}
+		OFFSET ${offset}
 	</select>
 	
 	<select id="item" resultMap="usersVO">
 		SELECT *
 		FROM users
-		WHERE id = #{id}
+		WHERE NO = #{NO}
 	</select>
 	
 	<insert id="singup">
@@ -55,7 +82,8 @@
 			NAME,
 			EMAIL,
 			PHONE,
-			SBSCRBDE
+			SBSCRBDE,
+			ADMIN
 		)
 		VALUES (
 			#{id},
@@ -63,9 +91,16 @@
 			#{name},
 			#{email},
 			#{phone},
-			NOW()
+			NOW(),
+			'N'
 		)
 	</insert>
+	
+	<delete id="usersdelete">
+		DELETE
+		FROM users
+		WHERE NO = #{NO}
+	</delete>
 	
 	<!-- <update id="usersupdate">
 		UPDATE users

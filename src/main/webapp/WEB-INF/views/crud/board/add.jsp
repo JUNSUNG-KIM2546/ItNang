@@ -16,8 +16,8 @@
 		<form method="post">
 		<div>
 			<div>
-				<label>작성자:</label>
-				<input type="text" name="NO">
+				<label>작성자:</label> <span>${loginVO.id}</span>
+				<input type="hidden" name="NO" value="${loginVO.NO}" readonly>
 			</div>
 			
 			<div>

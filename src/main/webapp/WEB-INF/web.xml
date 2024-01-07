@@ -30,6 +30,11 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 일정 시간 후 자동으로 로그아웃 -->
+	<session-config>
+		<session-timeout>180</session-timeout>
+	</session-config>
+	
 	<!-- [시작] UTF-8 설정 --> 
     <!-- filter와 filter-mapping을 만들어 준다. -->
     <filter> 
