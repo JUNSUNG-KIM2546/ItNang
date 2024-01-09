@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자유게시판 등록</title>
 </head>
 <body>
 	<div>
@@ -16,8 +16,8 @@
 		<form method="post">
 		<div>
 			<div>
-				<label>작성자:</label>
-				<input type="text" name="userId">
+				<label>작성자:</label> <span>${loginVO.id}</span>
+				<input type="hidden" name="NO" value="${loginVO.NO}" readonly>
 			</div>
 			
 			<div>
@@ -35,7 +35,7 @@
 			
 			<div>
 				<button>등록</button>
-				<a href="board"><button type="button">목록</button></a>
+				<a href="list"><button type="button">목록</button></a>
 			</div>
 		</div>
 		</form>

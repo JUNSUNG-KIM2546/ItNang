@@ -26,7 +26,7 @@
 		<div>
 			<div>
 				<label>작성자:</label>
-				<input type="text" name="userId" value="${item.userId}" readonly>
+				<input type="text" name="NO" value="${item.NO}" readonly>
 			</div>
 			<div>
 				<label>제목:</label>
@@ -42,7 +42,7 @@
 			</div>
 			<div>
 				<button>변경</button>
-				<a href="../board"><button type="button">목록</button></a>
+				<a href="../list"><button type="button">목록</button></a>
 			</div>
 		</div>
 		</form>
