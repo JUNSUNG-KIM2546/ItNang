@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> 있냥?!(자유게시판) </title>
+<title> 있냥?!(자랑하기) </title>
 </head>
 	<!-- 파비콘 -->
 	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
@@ -30,15 +30,15 @@
 			</div>
 			<div>
 				<label>제목:</label>
-				<input type="text" name="boardSj" value="${item.boardSj}" >
+				<input type="text" name="boastSj" value="${item.boastSj}" >
 			</div>
 			<div>
 				<label>내용:</label>
-				<input type="text" name="boardCn" value="${item.boardCn}">
+				<input type="text" name="boastCn" value="${item.boastCn}">
 			</div>
 			<div>
 				<label>이미지:</label>
-				<input type="file" name="boardImg" value="${item.boardImg}">
+				<input type="file" name="boastImg" value="${item.boastImg}">
 			</div>
 			<div>
 				<button>변경</button>

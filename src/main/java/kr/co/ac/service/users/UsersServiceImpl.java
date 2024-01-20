@@ -27,8 +27,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public UsersVO item(Long NO) {
-		return usersdao.item(NO);
+	public UsersVO item(Long uNO) {
+		return usersdao.item(uNO);
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public void delete(Long NO) {
-		usersdao.delete(NO);
+	public void delete(Long uNO) {
+		usersdao.delete(uNO);
 	}
 
 }

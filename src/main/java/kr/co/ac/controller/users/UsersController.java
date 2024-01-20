@@ -20,14 +20,6 @@ public class UsersController {
 	@Autowired
 	UsersService usersservice;
 		
-	
-	// 로그인창
-	//@GetMapping("/Logins")
-	//String Login() {
-	//	return users + "Login";
-	//}
-	
-		
 	// 회원가입창(모달창)
 	@GetMapping("/SignUps")
 	String SingUp() {
@@ -35,6 +27,7 @@ public class UsersController {
 	}
 	@PostMapping("/SingUps")
 	String SingUp(UsersVO item) {
+		item.setuNick(item.getuId());
 		usersservice.SingUp(item);
 		return "redirect:/";
 		//리다이렉트
@@ -50,30 +43,30 @@ public class UsersController {
 	}
 	
 	// 회원업데이트
-	@GetMapping("/UserUpdate/{id}")
-	String usersupdate(@PathVariable Long NO, Model model) {
-		UsersVO item = usersservice.item(NO);
+	@GetMapping("/UserUpdate/{uNo}")
+	String usersupdate(@PathVariable Long uNo, Model model) {
+		UsersVO item = usersservice.item(uNo);
 		
 		model.addAttribute("item",item);
 		
 		return users + "Uupdate";
 	}	
-	@PostMapping("/UserUpdate/{id}")
-	String usersupdate(@PathVariable Long NO, UsersVO item) {
-		item.setNO(NO);
+	@PostMapping("/UserUpdate/{uNo}")
+	String usersupdate(@PathVariable Long uNo, UsersVO item) {
+		item.setuNo(uNo);
 		
 		usersservice.update(item);
 		
-		return "redirect:../Ulist";
+		return "redirect:../UsersList";
 		//book/update/13 -> "redirect:list" -> /book/update/list
 	}
 	
 	// 회원삭제
-	@GetMapping("/UserDelete/{id}")
-	String usersdelete(@PathVariable Long NO) {
-		usersservice.delete(NO);
+	@GetMapping("/UserDelete/{uNo}")
+	String usersdelete(@PathVariable Long uNo) {
+		usersservice.delete(uNo);
 			
-		return "redirect:../Ulist";
+		return "redirect:../UsersList";
 	}
 	
 }

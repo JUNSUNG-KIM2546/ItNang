@@ -56,3 +56,32 @@
     font-size: 16px;
     background-color: #A4C3FF;
 }
+
+/* 업데이트 스타일 */
+#uUpdate-form > input{
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#uUpdate-form > input::placeholder{
+    color: #807e7e;
+}
+#uUpdate-form > input[type="submit"]{
+    text-shadow:2px 2px 2px #000;
+    color: #ddffff;
+    font-size: 16px;
+    background-color: #eeddff;
+    margin-top: 20px;
+}
+#uUpdate-form > input[type="checkbox"]{
+    color: #000;
+    display: none;
+}
+#uUpdate-form > label{
+    color: #000;
+    color: #999999;
+}

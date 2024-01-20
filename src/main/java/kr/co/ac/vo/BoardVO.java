@@ -2,8 +2,8 @@ package kr.co.ac.vo;
 
 public class BoardVO extends UsersVO {
 	
-	//사용자 ID
-	private Long NO;
+	//유저고유번호
+	private Long uNo;
 	
 	//게시판 ID
 	private Long boardId;
@@ -14,7 +14,7 @@ public class BoardVO extends UsersVO {
 	//게시물 내용
 	private String boardCn;
 		
-	//조회수
+	//하트수
 	private Long boardCo;
 		
 	//등록자 IP
@@ -31,13 +31,17 @@ public class BoardVO extends UsersVO {
 		
 	//최종수정시점
 	private java.util.Date boardLast;
+	
+	//게시물 분류
+	private String useAt;
 
-	public Long getNO() {
-		return NO;
+	
+	public Long getuNo() {
+		return uNo;
 	}
 
-	public void setNO(Long nO) {
-		NO = nO;
+	public void setuNo(Long uNo) {
+		this.uNo = uNo;
 	}
 
 	public Long getBoardId() {
@@ -111,4 +115,13 @@ public class BoardVO extends UsersVO {
 	public void setBoardLast(java.util.Date boardLast) {
 		this.boardLast = boardLast;
 	}
+
+	public String getUseAt() {
+		return useAt;
+	}
+
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
+	}
+	
 }

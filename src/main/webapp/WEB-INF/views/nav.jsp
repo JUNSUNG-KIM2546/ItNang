@@ -13,51 +13,59 @@
 	<jsp:include page="../views/head.jsp"></jsp:include> 
 	
 	<header>
-		<nav>
-			<div class="nav">
-		        <div class="logo">
-		        	<a href="/"><img src="../resources/project/image/Logo/여기있냥.png" alt=""></a>
-		            
-		        </div>
-		        
-		        <!-- 로그인 안한 상태 -->
-		        <c:if test="${loginVO == null}">
-			        <div class="nav_but">
-			            <a href="main/Boast"><img src="../resources/project/image/menuimg/메뉴이미지1-3.png"> 냥이 자랑 </a>
-			            <a href="main/Recommend"><img src="../resources/project/image/menuimg/메뉴이미지2-3.png"> 추천게시판 </a>
-			            <a href="main/Sharing"><img src="../resources/project/image/menuimg/메뉴이미지3-3.png"> 나눔게시판 </a>
-			            <a href="../board/list"><img src="../resources/project/image/menuimg/메뉴이미지4-3.png"> 자유게시판 </a>
-			        </div>
-			        
-			        <div class="nav2_but">
-			            <!-- <a href="../Logins" onclick="window.open(this.href, '_blank', 'width=450, height=600'); return false;">로그인</a> -->
-			            <!-- <a href="../SingUps" onclick="window.open(this.href, '_blank', 'width=450, height=700'); return false;" >회원가입</a> -->
-			            <button type="button" class="btn btn-outline-success" id="Logins" data-bs-toggle="modal" data-bs-target="#LoginsModal"> Sign in | Sign up </button>
-			            <!-- <button type="button" class="btn btn-outline-info" id="SignUps" data-bs-toggle="modal" data-bs-target="#SignUpsModal"> 회원가입 </button> -->
-			        </div>
-		        </c:if>
-		        
-		        <!-- 로그인 상태 -->
-		        <c:if test="${loginVO != null}">
-			        <div class="nav_but">
-			            <a href="main/Boast"><img src="../resources/project/image/menuimg/메뉴이미지1-3.png"> 냥이 자랑 </a>
-			            <a href="main/Recommend"><img src="../resources/project/image/menuimg/메뉴이미지2-3.png"> 추천게시판 </a>
-			            <a href="main/Sharing"><img src="../resources/project/image/menuimg/메뉴이미지3-3.png"> 나눔게시판 </a>
-			            <a href="../board/list"><img src="../resources/project/image/menuimg/메뉴이미지4-3.png"> 자유게시판 </a>
-			            <c:if test="${loginVO.admin != 'N' && loginVO.admin == 'Y'}">
-			            	<a href="../UsersList"><img src="../resources/project/image/menuimg/메뉴이미지1-3.png"> 유저관리 </a>
+		<!-- navigation -->
+	    <nav>
+	    	<!-- 로그인 안한 상태 -->
+	    	<c:if test="${loginVO == null}">
+				<div class="nav-container">
+					<div class="nav-1">
+						<!-- <a href="/"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="logo_img"></a> -->
+						<a href="/">
+							<img class="logo_instagram_txt" src="/resources/project/image/Logo/logo_text.png" alt="logo_text">
+						</a>
+					</div>
+					<form>
+						<input id="searchInputs" type="text" name="keyword" value="${pager.keyword}" class="input-search" placeholder="검색">
+					</form>
+					<div class="nav-2">
+						<a href="/boast/list"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="잇냥그램"></a>
+						<a href="#"><img src="/resources/project/image/Logo/dm2.png" alt="DM"></a>
+						<!-- <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="탐색"> -->
+						<a href="#" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"></a>
+						<a href="/board/list" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a>
+						<button type="button" class="btn btn-outline-success" id="Logins" data-bs-toggle="modal" data-bs-target="#LoginsModal"> Sign in | Sign up </button>
+					</div>
+				</div>
+			</c:if>
+	    	
+	    	<!-- 로그인 상태 -->
+	    	<c:if test="${loginVO != null}">
+				<div class="nav-container">
+					<div class="nav-1">
+						<!-- <a href="/"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="logo_img"></a> -->
+						<a href="/">
+							<img class="logo_instagram_txt" src="/resources/project/image/Logo/logo_text.png" alt="logo_text">
+						</a>
+					</div>
+					<form>
+						<input id="searchInputs" type="text" name="keyword" value="${pager.keyword}" class="input-search" placeholder="검색">
+					</form>
+					<div class="nav-2">
+						<a href="#"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="Add"></a>
+						<a href="#"><img src="/resources/project/image/Logo/dm2.png" alt="DM"></a>
+						<!-- <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="탐색"> -->
+						<a href="#" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"></a>
+						<a href="#" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a> 
+						<c:if test="${loginVO.useAt != 'N' && loginVO.useAt == 'A'}">
+			            	<a href="../UsersList"><img src="https://w7.pngwing.com/pngs/974/188/png-transparent-computer-icons-user-others.png"></a>
 			            </c:if>
-			        </div>
-			        
-			        <div class="nav2_but">
-			        	<div id="profileIMGbox">
-			        		<img id="profileIMG" alt="프로필 이미지" src="../resources/project/image/Logo/cat-4475583_1280.png">
-			        	</div>
-			            <span>${loginVO.id}님 환영합니다.&nbsp;&nbsp;</span><a href="/actionLogout" class="btn btn-outline-secondary"> Logout </a>
-			        </div>
-		        </c:if>
-		    </div>
-		</nav>
+						<a id="userUpdates" data-bs-toggle="modal" data-bs-target="#UserUpdateModal" href="#"><img class="pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="마이페이지"> <span>${loginVO.uNick}</span></a>
+						<a href="/actionLogout" class="btn btn-outline-secondary"> Logout </a>
+					</div>
+				</div>
+			</c:if>
+	    </nav>
+		
 	</header>
 	
 	<body>
@@ -79,11 +87,21 @@
 			    </div>
 			  </div>
 			</div>
+		
+			<!-- 회원정보 수정 모달창 -->
+			<div class="modal fade" id="UserUpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			    <div class="modal-content" id="userUpdate">
+			    
+			    </div>
+			  </div>
+			</div>
 		</div>
 		
 	</body>
 	
 	<script>
+		var user = ${loginVO.uNo};	
 	
 		$('#reset2').on( "click", function() {
 			$('#modalDiv')[0].reset();
@@ -99,6 +117,14 @@
 			$('#login').load("/logins");
 			//$('#login').modal();
 			console.log("로그인 모달")
+	    });
+		
+		$('#userUpdates').on( "click", function() {
+			//$('#LoginsModal').reload();
+			$('#userUpdate').load("/UserUpdate/"+user);
+			//$('#userUpadte').modal();
+			console.log("유저정보수정 모달")
+			console.log(user)
 	    });
 		
 		/* $("#SignUps").on( "click", function() {
@@ -134,8 +160,8 @@
 					Kakao.API.request({url : '/v2/user/me',
 						success : function(response) {
 							console.log(response)
-							$("#kakao-login-form input[name=id]").val(response.id);
-							$("#kakao-login-form input[name=name]").val(response.properties.nickname);
+							$("#kakao-login-form input[name=uId]").val(response.id);
+							$("#kakao-login-form input[name=uName]").val(response.properties.nickname);
 							/* $("input[name=loginType]").val("KAKAO"); */
 							/* $("input[name=userId]").val(response.id); */
 							/* $("input[name=userNm]").val(response.properties.nickname); */

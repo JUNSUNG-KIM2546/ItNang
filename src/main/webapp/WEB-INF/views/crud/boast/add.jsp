@@ -1,44 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판 등록</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> 있냥?! Boast Add </title>
 </head>
+
+	<jsp:include page="../../head.jsp"></jsp:include>
+	
 <body>
-	<div>
-		<div>
-			<h3>등록</h3>
-		</div>
-		
-		<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
-		<form method="post">
-		<div>
-			<div>
-				<label>작성자:</label> <span>${loginVO.id}</span>
-				<input type="hidden" name="NO" value="${loginVO.NO}" readonly>
-			</div>
-			
-			<div>
-				<label>제목:</label>
-				<input type="text" name="boardSj">
-			</div>
-			<div>
-				<label>내용:</label>
-				<input type="text" name="boardCn">
-			</div>
-			<div>
-				<label>이미지:</label>
-				<input type="file" name="boardImg">
-			</div>
-			
-			<div>
-				<button>등록</button>
-				<a href="list"><button type="button">목록</button></a>
-			</div>
-		</div>
-		</form>
+
+	<!-- Modal -->
+	<div class="modal-header">
+		<h1 class="modal-title fs-5" id="exampleModalLabel">Boast Add</h1>
+		<button type="button" class="btn-close" id="reset1" data-bs-dismiss="modal" aria-label="Close"></button>
 	</div>
+	
+	<div class="modal-body">
+		<div class="login-wrapper">
+			<img src="../resources/project/image/Logo/너두있냥.png" alt="">
+			<h2><span style="text-shadow:2px 2px 2px #000;">Boast Add</span></h2>
+	
+			<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
+			<form action="/boast/${loginVO.uNo}/add" id="login-form" method="post" enctype="multipart/form-data">
+				<div>
+					<img alt="자랑게시물IMG" src="">
+					<input type="file" name="uImg" value="${uImg}">
+				</div>
+				<hr>
+				<label>닉네임</label>
+				<input type="text" name="uNick" value="${item.uNick}" placeholder="닉네임">
+			
+				<label>아이디</label>
+				<input type="text" name="uId" value="${item.uId}" placeholder="ID" readonly>
+			
+				<label>비밀번호</label>
+		    	<input type="password" name="uPass" value="${item.uPass}" placeholder="Password">
+		    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
+
+				<label>이름</label>
+				<input type="text" name="uName" value="${item.uName}" placeholder="Name">
+		    
+				<label>E-Mail</label>
+				<input type="text" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
+		    
+				<label>연락처</label>
+				<input type="text" name="uPhone" value="${item.uPhone}" placeholder="Phone">
+		    
+				<label>소개</label>
+				<input type="text" name="uDetail" value="${item.uDetail}" placeholder="Detail">
+			    <input type="submit" value="Update" >
+			</form>
+		</div>
+	</div>
+    
+    <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" id="reset2" data-bs-dismiss="modal">닫기</button>
+    </div>
+	
 </body>
 </html>

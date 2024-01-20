@@ -23,6 +23,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 첨부파일 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="102400000"/>
+	</beans:bean>
+	
 	<context:component-scan base-package="kr.co.ac" />
 	
 	

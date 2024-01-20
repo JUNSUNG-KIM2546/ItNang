@@ -118,12 +118,12 @@
 
 
 /* 풋터 */
-footer{
+/* footer{
     color: white;
     background: black;
     padding-top: 50px;
     padding-bottom: 50px;
-}
+} */
 footer .container{
     max-width: 1300px;
     margin: auto;

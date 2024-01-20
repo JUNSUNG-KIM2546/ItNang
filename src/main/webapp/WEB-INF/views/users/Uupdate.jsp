@@ -4,48 +4,73 @@
 
 <!DOCTYPE html>
 <html>
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> 있냥?!(자유게시판) </title>
+<title> 있냥?! Profile Update </title>
 </head>
-	<!-- 파비콘 -->
-	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
+
+	<jsp:include page="../head.jsp"></jsp:include>
+	
 <body>
-	<div class="container">
-		<div>
-			<h3> 회원 게시물 수정 </h3>
-		</div>
-		
-		<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
-		<form method="post">
-		<div>
-			<div>
-				<label>작성자:</label>
-				<input type="text" name="id" value="${item.id}" readonly>
-			</div>
-			<div>
-				<label>제목:</label>
-				<input type="text" name="boardSj" value="${item.boardSj}" >
-			</div>
-			<div>
-				<label>내용:</label>
-				<input type="text" name="boardCn" value="${item.boardCn}">
-			</div>
-			<div>
-				<label>이미지:</label>
-				<input type="file" name="boardImg" value="${item.boardImg}">
-			</div>
-			<div>
-				<button>변경</button>
-				<a href="../UsersList"><button type="button">목록</button></a>
-			</div>
-		</div>
-		</form>
+
+	<!-- Modal -->
+	<div class="modal-header">
+		<h1 class="modal-title fs-5" id="exampleModalLabel">Profile Update</h1>
+		<button type="button" class="btn-close" id="reset1" data-bs-dismiss="modal" aria-label="Close"></button>
 	</div>
+	
+	<div class="modal-body">
+		<div class="login-wrapper">
+			<img src="../resources/project/image/Logo/너두있냥.png" alt="">
+			<h2><span style="text-shadow:2px 2px 2px #000;">Profile Update</span></h2>
+	
+			<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
+			<form action="/UserUpdate/${loginVO.uNo}" id="login-form" method="post">
+				<div>
+					<!-- 프로필 이미지가 없을 경우 -->
+					<c:if test="">
+						<img alt="프로필IMG" src="/resources/project/image/Logo/cat-4475583_1280.png">
+					</c:if>
+					
+					<!-- 프로필 이미지가 있을 경우 -->
+					<c:if test="">
+						<img alt="프로필IMG" src="">
+					</c:if>
+					<input type="file" name="uImg" value="${uImg}">
+				</div>
+				<hr>
+				<input type="hidden" name="uNo" value="${uNo}" readonly>
+				
+				<label>닉네임</label>
+				<input type="text" name="uNick" value="${item.uNick}" placeholder="닉네임">
+			
+				<label>아이디</label>
+				<input type="text" name="uId" value="${item.uId}" placeholder="ID" readonly>
+			
+				<label>비밀번호</label>
+		    	<input type="password" name="uPass" value="${item.uPass}" placeholder="Password">
+		    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
+
+				<label>이름</label>
+				<input type="text" name="uName" value="${item.uName}" placeholder="Name">
+		    
+				<label>E-Mail</label>
+				<input type="text" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
+		    
+				<label>연락처</label>
+				<input type="text" name="uPhone" value="${item.uPhone}" placeholder="Phone">
+		    
+				<label>소개</label>
+				<input type="text" name="uDetail" value="${item.uDetail}" placeholder="Detail">
+			    <input type="submit" value="Update" >
+			</form>
+		</div>
+	</div>
+    
+    <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" id="reset2" data-bs-dismiss="modal">닫기</button>
+    </div>
+	
 </body>
 </html>

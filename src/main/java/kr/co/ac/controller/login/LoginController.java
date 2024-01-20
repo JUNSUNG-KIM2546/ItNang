@@ -52,7 +52,7 @@ public class LoginController {
 	        
 	        // 로그인 성공 후, 이전 페이지의 URL을 가져옴
             String prevPage = (String) session.getAttribute("prevPage");
-	        if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("") && !loginVO.getPhone().equals("kakao가입자")) {
+	        if (loginVO != null && loginVO.getuId() != null && !loginVO.getuId().equals("") && !loginVO.getuPhone().equals("kakao가입자")) {
 	            session.setAttribute("loginVO", loginVO);
 	            
 	            if (prevPage != null && !prevPage.isEmpty()) {
@@ -75,12 +75,12 @@ public class LoginController {
 	@PostMapping("/kakaoLogin")
 	public String kakaoMember(@ModelAttribute UsersVO usersVO, HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) {
 		// userVO에 값이 있는지 확인
-		usersVO.setPass(usersVO.getId());
+		usersVO.setuPass(usersVO.getuId());
 		UsersVO loginVO = loginService.actionLogin(usersVO);
-	    if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("") && loginVO.getPhone().equals("kakao가입자")) {
+	    if (loginVO != null && loginVO.getuId() != null && !loginVO.getuId().equals("") && loginVO.getuPhone().equals("kakao가입자")) {
 	        
 	    	// 값이 있다면 로그인을 수행
-	        if (loginVO.getId() != null && loginVO.getName() != null) {
+	        if (loginVO.getuId() != null && loginVO.getuName() != null) {
 	            session.setAttribute("loginVO", loginVO);
 	           
 	            // 로그인 성공 후, 이전 페이지의 URL을 가져옴
@@ -105,10 +105,12 @@ public class LoginController {
 	        // 값이 없다면 회원가입을 수행
 	        UsersVO kakaovo = usersVO;
 	        
-	        kakaovo.setId(usersVO.getId());
-			kakaovo.setPass(kakaovo.getId());
-			kakaovo.setName(usersVO.getName());
-			kakaovo.setPhone("kakao가입자");
+	        kakaovo.setuId(usersVO.getuId());
+	        kakaovo.setuNick(usersVO.getuId());
+			kakaovo.setuPass(kakaovo.getuId());
+			kakaovo.setuName(usersVO.getuName());
+			kakaovo.setuEmail("kakao가입자");
+			kakaovo.setuPhone("kakao가입자");
 			usersService.SingUp(kakaovo);
 			
 	        session.setAttribute("loginVO", kakaovo);

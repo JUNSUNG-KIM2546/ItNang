@@ -5,36 +5,52 @@
 
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
 	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
-		<result property="NO" column="NO"/>
-		<result property="id" column="ID"/>
-		<result property="pass" column="PASS"/>
-		<result property="name" column="NAME"/>
-		<result property="email" column="EMAIL"/>
-		<result property="phone" column="PHONE"/>
-		<result property="sbscrbde" column="SBSCRBDE"/>
-		<result property="admin" column="ADMIN"/>
+		<result property="uNo" 			column="u_no"/>
+		<result property="uId" 			column="u_id"/>
+		<result property="uPass" 		column="u_pass"/>
+		<result property="uName" 		column="u_name"/>
+		<result property="uEmail" 		column="u_email"/>
+		<result property="uPhone" 		column="u_phone"/>
+		<result property="uDetail" 		column="u_detail"/>
+		<result property="uImg" 		column="u_img"/>
+		<result property="registDate" 	column="regist_date"/>
+		<result property="updateDate" 	column="update_date"/>
+		<result property="useAt" 		column="use_at"/>
+	</resultMap>
+	
+	<resultMap type="kr.co.ac.vo.FileVO" id="fileVO">
+		<result property="fileNo" column="file_no" />
+		<result property="uNo" column="u_no" />
+		<result property="savedName" column="saved_name" />
+		<result property="fileName" column="file_name" />
+		<result property="upTime" column="up_time" />
+		<result property="filePath" column="file_path" />
+		<result property="fileExt" column="file_ext" />
+		<result property="itemNo" column="item_no" />
+		<result property="fileSize" column="file_size" />
 	</resultMap>
 	
 	<sql id="search">
 		SELECT * FROM users 
 		<where>
 			<if test="search == 1">
-				id = #{keyword}
+				u_id LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="search == 2">
-				name LIKE CONCAT('%', #{keyword}, '%')
+				u_nick LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="search == 3">
-				email LIKE CONCAT('%', #{keyword}, '%')
+				u_name LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="search == 4">
-				phone LIKE CONCAT('%', #{keyword}, '%')
+				u_email LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="search == 5">
-				admin LIKE CONCAT('%', #{keyword}, '%')
+				u_phone LIKE CONCAT('%', #{keyword}, '%')
 			</if>
+			
 		</where>
-		ORDER BY id
+		ORDER BY u_id
 	</sql>
 	
 	<select id="total" resultType="Integer">
@@ -44,7 +60,7 @@
 	<select id="userslist" resultType="UsersVO">
 		SELECT lists.*  
 		FROM (<include refid="search"></include>) lists
-		ORDER BY SBSCRBDE DESC
+		ORDER BY regist_date DESC
 		LIMIT ${perPage}
 		OFFSET ${offset}
 	</select>
@@ -61,55 +77,47 @@
 	</select> 
 	-->
 	
-	<select id="boardlist" resultType="BoardVO">
-		SELECT lists.*  
-		FROM (<include refid="search"></include>) lists
-		ORDER BY BOARD_FRST DESC
-		LIMIT ${perPage}
-		OFFSET ${offset}
-	</select>
-	
 	<select id="item" resultMap="usersVO">
 		SELECT *
 		FROM users
-		WHERE NO = #{NO}
+		WHERE u_no = #{uNo}
 	</select>
 	
 	<insert id="singup">
 		INSERT INTO users (
-			ID,
-			PASS,
-			NAME,
-			EMAIL,
-			PHONE,
-			SBSCRBDE,
-			ADMIN
+			u_nick,
+			u_id,
+			u_pass,
+			u_name,
+			u_email,
+			u_phone,
+			regist_date,
+			update_date,
+			use_at
 		)
 		VALUES (
-			#{id},
-			#{pass},
-			#{name},
-			#{email},
-			#{phone},
+			#{uNick},
+			#{uId},
+			#{uPass},
+			#{uName},
+			#{uEmail},
+			#{uPhone},
+			NOW(),
 			NOW(),
 			'N'
 		)
 	</insert>
 	
+	<update id="usersupdate">
+		UPDATE users
+		SET u_nick = #{uNick}, u_id = #{uId}, u_pass = #{uPass}, u_name = #{uName}, u_email = #{uEmail}, u_phone = #{uPhone}, u_detail = #{uDetail}, update_date = NOW()
+		WHERE u_No = #{uNo}
+	</update>
+	
 	<delete id="usersdelete">
 		DELETE
 		FROM users
-		WHERE NO = #{NO}
+		WHERE u_no = #{uNo}
 	</delete>
 	
-	<!-- <update id="usersupdate">
-		UPDATE users
-		SET bookname = #{bookname}, publisher = #{publisher}, price = #{price}
-		WHERE id = #{Id}
-	</update> -->
-	
-	<!-- <delete id="usersdelete">
-		DELETE FROM users
-		WHERE id = #{id}
-	</delete> -->
 </mapper>

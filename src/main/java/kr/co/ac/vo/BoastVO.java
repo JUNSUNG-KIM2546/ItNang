@@ -1,20 +1,20 @@
 package kr.co.ac.vo;
 
-public class BoastVO {
-
+public class BoastVO extends UsersVO {
+	
+	//유저고유번호
+	private Long uNO;
+	
 	//게시판 ID
 	private Long boastId;
 	
-	//사용자 ID
-	private String NO;
-		
 	//게시물 명
 	private String boastSj;
 		
 	//게시물 내용
 	private String boastCn;
 		
-	//조회수
+	//하트수
 	private int boastCo;
 		
 	//등록자 IP
@@ -32,20 +32,21 @@ public class BoastVO {
 	//최종수정시점
 	private java.util.Date boastLast;
 
+	
+	public Long getuNO() {
+		return uNO;
+	}
+
+	public void setuNO(Long uNO) {
+		this.uNO = uNO;
+	}
+
 	public Long getBoastId() {
 		return boastId;
 	}
 
 	public void setBoastId(Long boastId) {
 		this.boastId = boastId;
-	}
-
-	public String getNO() {
-		return NO;
-	}
-
-	public void setNO(String nO) {
-		NO = nO;
 	}
 
 	public String getBoastSj() {
@@ -111,5 +112,5 @@ public class BoastVO {
 	public void setBoastLast(java.util.Date boastLast) {
 		this.boastLast = boastLast;
 	}
-
+	
 }

@@ -29,10 +29,10 @@
 						<select name="search" class="form-select form-select-sm">
 							<option value="0" > 검색 항목을 선택하세요 </option>
 							<option value="1" ${pager.search == 1 ? "selected" : ""}> 아이디 </option>
-							<option value="2" ${pager.search == 2 ? "selected" : ""}> 성명 </option>
-							<option value="3" ${pager.search == 2 ? "selected" : ""}> E-Mail </option>
-							<option value="4" ${pager.search == 2 ? "selected" : ""}> 전화번호 </option>
-							<option value="5" ${pager.search == 3 ? "selected" : ""}> 권한 </option>
+							<option value="2" ${pager.search == 2 ? "selected" : ""}> 닉네임 </option>
+							<option value="3" ${pager.search == 3 ? "selected" : ""}> 이름 </option>
+							<option value="4" ${pager.search == 4 ? "selected" : ""}> 이메일 </option>
+							<option value="5" ${pager.search == 5 ? "selected" : ""}> 연락처 </option>
 						</select>
 					</div>					
 					<div class="col">
@@ -50,13 +50,15 @@
 			
 				<thead class="table-dark">
 					<tr>
-						<th> No </th>
+						<th> No. </th>
 						<th> ID </th>
+						<th> Nick </th>
 						<th> PW </th>
-						<th> 성명 </th>
+						<th> 이름 </th>
 						<th> E-Mail </th>
 						<th> Tell </th>
 						<th> 가입일자 </th>
+						<th> 수정일자 </th>
 						<th> 권한여부 </th>
 						<th> 관리 </th>
 					</tr>
@@ -65,15 +67,17 @@
 				<tbody>
 					<c:forEach var="item" items="${userslist}">
 						<tr>
-							<th> ${item.NO} </th>
-							<th> ${item.id} </th>
-							<th> ${item.pass} </th>
-							<th> ${item.name} </th>
-							<th> ${item.email} </th>
-							<th> ${item.phone} </th>
-							<th> <fmt:formatDate value="${item.sbscrbde}" pattern="yyyy.MM.dd"/> </th>
-							<th> ${item.admin} </th>
-							<th> <a href="delete/${item.id}" class="btn btn-danger btn-sm"> <i class="bi bi-trash"></i> </a> <a href="update/${item.id}" class="btn btn-warning btn-sm"> <i class="bi bi-recycle"></i> </a> </th>
+							<th> ${item.uNo} </th>
+							<th> ${item.uId} </th>
+							<th> ${item.uNick} </th>
+							<th> ${item.uPass} </th>
+							<th> ${item.uName} </th>
+							<th> ${item.uEmail} </th>
+							<th> ${item.uPhone} </th>
+							<th> <fmt:formatDate value="${item.registDate}" pattern="yyyy.MM.dd"/> </th>
+							<th> <fmt:formatDate value="${item.updateDate}" pattern="yyyy.MM.dd"/> </th>
+							<th> ${item.useAt} </th>
+							<th> <a href="UserDelete/${item.uNo}" class="btn btn-danger btn-sm"> <i class="bi bi-trash"></i> </a> <a href="UserUpdate/${item.uNo}" class="btn btn-warning btn-sm"> <i class="bi bi-recycle"></i> </a> </th>
 						</tr>
 					</c:forEach>
 				</tbody>

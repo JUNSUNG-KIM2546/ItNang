@@ -11,11 +11,11 @@ public interface UsersDao {
 
 	List<UsersVO> userslist(Pager pager);
 
-	UsersVO item(Long NO);
+	UsersVO item(Long uNO);
 
 	void update(UsersVO item);
 
-	void delete(Long NO);
+	void delete(Long uNO);
 
 	int total(Pager pager);
 

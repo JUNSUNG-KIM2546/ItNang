@@ -21,10 +21,10 @@
 	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
 	<link rel="stylesheet" href="../resources/project/css/nav.css">
 	
-	<footer>
+	<footer id="foo" style="color: white; background: black; padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="left">
-            	<a href="homes"><img src="../resources/project/image/Logo/너두있냥.png" alt=""></a>
+            	<a href="homes"><img src="../resources/project/image/Logo/logo_text(W).png" alt=""></a>
                 <h1> 있냥?!</h1>
                 <p><a href="https://www.kopo.ac.kr/daejeon/content.do?menu=8074" target="_blank">https://www.kopo.ac.kr/daejeon/content.do?menu=8074</a></p>
                 <div class="sns">
@@ -62,7 +62,7 @@
         </div>
         <br/>
         <div class="copy_right">
-            <p>한국폴리텍대학(대전캠퍼스) 스마트 소프트웨어 하이테크과정 개인 프로젝트</p>
+            <p> @JunnnMo3o 개인 프로젝트 </p>
         </div>
     </footer>
 </html>

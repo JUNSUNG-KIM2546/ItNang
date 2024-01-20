@@ -5,27 +5,24 @@
 
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
 	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
-		<result property="NO" column="NO"/>
-		<result property="id" column="ID"/>
-		<result property="pass" column="PASS"/>
-		<result property="name" column="NAME"/>
-		<result property="email" column="EMAIL"/>
-		<result property="phone" column="PHONE"/>
-		<result property="sbscrbde" column="SBSCRBDE"/>
-		<result property="admin" column="ADMIN"/>
+		<result property="uNo" 			column="u_no"/>
+		<result property="uId" 			column="u_id"/>
+		<result property="uPass" 		column="u_pass"/>
+		<result property="uName" 		column="u_name"/>
+		<result property="uEmail" 		column="u_email"/>
+		<result property="uPhone" 		column="u_phone"/>
+		<result property="uDetail" 		column="u_detail"/>
+		<result property="uImg" 		column="u_img"/>
+		<result property="registDate" 	column="regist_date"/>
+		<result property="updateDate" 	column="update_date"/>
+		<result property="useAt" 		column="use_at"/>
 	</resultMap>
 	
 	<select id="actionLogin" resultMap="usersVO">
 		SELECT
-			NO,
-			ID,
-			PASS,
-			NAME,
-			EMAIL,
-			PHONE,
-			ADMIN
+			*
 		FROM USERS
-		WHERE ID = #{id}
-			AND PASS = #{pass}
+		WHERE u_id = #{uId}
+			AND u_pass = #{uPass}
 	</select>
 </mapper>

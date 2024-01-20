@@ -29,8 +29,8 @@
 	        
 	        <!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
 	        <form id="login-form" method="post" action="/actionLogin">
-	            <input type="text" name="id" placeholder="ID">
-	            <input type="password" name="pass" placeholder="Password">
+	            <input type="text" name="uId" placeholder="ID">
+	            <input type="password" name="uPass" placeholder="Password">
 	            <label for="remember-check">
 	                <input type="checkbox" id="remember-check">아이디 저장
 	            </label>
@@ -46,8 +46,8 @@
 			</div>
 			<!-- 카카오 로그인/회원가입 폼 -->
 			<form action="/kakaoLogin" id="kakao-login-form" name="kakao-login-form" method="post">
-				<input type="hidden" name="id" /> 
-				<input type="hidden" name="name" />
+				<input type="hidden" name="uId" /> 
+				<input type="hidden" name="uName" />
 				<!-- <input type="hidden" name="loginType" value=""/> -->
 				<!-- <input type="hidden" name="userId" /> -->
 				<!-- <input type="hidden" name="userNm" /> -->
@@ -111,8 +111,8 @@
 				Kakao.API.request({url : '/v2/user/me',
 					success : function(response) {
 						console.log(response)
-						$("#kakao-login-form input[name=id]").val(response.id);
-						$("#kakao-login-form input[name=name]").val(response.properties.nickname);
+						$("#kakao-login-form input[name=uId]").val(response.id);
+						$("#kakao-login-form input[name=uName]").val(response.properties.nickname);
 						/* $("input[name=loginType]").val("KAKAO"); */
 						/* $("input[name=userId]").val(response.id); */
 						/* $("input[name=userNm]").val(response.properties.nickname); */

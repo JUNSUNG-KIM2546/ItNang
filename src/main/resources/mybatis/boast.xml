@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boast">
+	
+	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
+	<resultMap type="kr.co.ac.vo.BoastVO" id="boastVO">
+		<result property="NO" column="NO"/>
+	</resultMap>
+	
+	<resultMap type="kr.co.ac.vo.FileVO" id="fileVO">
+		<result property="fileNo" column="file_no" />
+		<result property="boastId" column="boast_id" />
+		<result property="savedName" column="saved_name" />
+		<result property="fileName" column="file_name" />
+		<result property="upTime" column="up_time" />
+		<result property="filePath" column="file_path" />
+		<result property="fileExt" column="file_ext" />
+		<result property="itemNo" column="item_no" />
+		<result property="fileSize" column="file_size" />
+	</resultMap>
+	
+	<select id="boastList" resultType="BoastVO">
+		SELECT b.*, u.*, uf.*
+		FROM users u LEFT OUTER JOIN boast b USING(u_no) LEFT OUTER JOIN users_file uf USING(u_no)
+		ORDER BY boast_last DESC
+	</select>
+<!-- 
+FROM users u
+LEFT JOIN ( SELECT item_no, MIN(file_no) AS min_file_no
+			FROM tbl_item_file
+			GROUP BY item_no ) AS min_files ON i.item_no = min_files.item_no
+LEFT JOIN tbl_item_file f ON i.item_no = f.item_no AND f.file_no = min_files.min_file_no
+ORDER BY i.regist_date DESC
+ -->
+	<select id="boastItem" resultType="BoastVO">
+		SELECT *
+		FROM BOAST 
+		WHERE boast_id = #{boastId}
+	</select>
+	
+	<insert id="boastInsert">
+		INSERT INTO BOAST (
+			u_no,
+			boast_sj,
+			boast_cn,
+			boast_co,
+			boast_ip,
+			boast_at,
+			boast_img,
+			boast_frst,
+			boast_last
+		)
+		VALUES (
+			#{uNo},
+			#{boastSj},
+			#{boastCn},
+			0,
+			'TEST_IP',
+			'N',
+			#{boastImg},
+			NOW(),
+			NOW()
+		)
+	</insert>
+	
+	<update id="boastUpdate">
+		UPDATE BOAST
+		SET boast_sj = #{boastSj}, boast_cn = #{boastCn}, boast_img = #{boastImg}, boast_last = NOW()
+		WHERE u_no = #{UsersVO.uNo} AND BOAST_ID = #{boastId}
+	</update>
+	
+	<delete id="boastDelete">
+		DELETE FROM BOAST
+		WHERE u_no = #{UsersVO.uNo} AND BOAST_ID = #{boastId}
+	</delete>
+</mapper>

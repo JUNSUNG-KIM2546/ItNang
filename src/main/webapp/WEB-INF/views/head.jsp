@@ -25,8 +25,14 @@
 	<!-- 파비콘 -->
 	<link rel="shortcut icon" href="../resources/project/image/favicon/favicon.ico">
 	
+	<!-- 자랑하기 페이지 스타일 -->
+	<link href="../resources/project/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/project/css/boast.css" rel="stylesheet" type="text/css" />
+	
 	<!-- 스타일 -->
 	<link rel="stylesheet" href="../resources/project/css/nav.css">
 	<link rel="stylesheet" href="../resources/project/css/SingUp.css">
+	
+	
 	
 </html>
