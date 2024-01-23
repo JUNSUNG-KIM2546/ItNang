@@ -9,10 +9,12 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ac.vo.FileVO;
 
+@Component
 public class FileUtil {
 	private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
 	
@@ -40,15 +42,15 @@ public class FileUtil {
 		
 		for (Entry<String, MultipartFile> entry : files.entrySet()) {
 			file = entry.getValue();
-			String originalName = file.getOriginalFilename();
+			String fileName = file.getOriginalFilename();
 			
 			//원 파일명이 없는 경우 (첨부가 되지 않은 file 타입의 input 처리)
-			if("".equals(originalName)) {
+			if("".equals(fileName)) {
 		    	continue;
 		    }
 			
-			int index = originalName.lastIndexOf(".");
-			String fileExt = originalName.substring(index + 1);
+			int index = fileName.lastIndexOf(".");
+			String fileExt = fileName.substring(index + 1);
 			
 			//저장 파일명
 			String savedName = keyString + UUID.randomUUID().toString();
@@ -57,7 +59,7 @@ public class FileUtil {
 			long fileSize = file.getSize();
 			
 			//파일 저장
-			if(!"".equals(originalName)) {
+			if(!"".equals(fileName)) {
 				filePath = storePath + File.separator + savedName;
 				
 				file.transferTo(new File(filePath));
@@ -67,7 +69,7 @@ public class FileUtil {
 			fileVO.setFileExt(fileExt);
 			fileVO.setFilePath(storePathString);
 			fileVO.setFileSize(fileSize);
-			fileVO.setFileName(originalName);
+			fileVO.setFileName(fileName);
 			fileVO.setSavedName(savedName);
 			
 			fileList.add(fileVO);
@@ -88,15 +90,15 @@ public class FileUtil {
         }
 
         // 파일 변수
-        String originalName = file.getOriginalFilename();
+        String fileName = file.getOriginalFilename();
 
         // 원 파일명이 없는 경우 (첨부가 되지 않은 file 타입의 input 처리)
-        if ("".equals(originalName)) {
+        if ("".equals(fileName)) {
             return null;
         }
 
-        int index = originalName.lastIndexOf(".");
-        String fileExt = originalName.substring(index + 1);
+        int index = fileName.lastIndexOf(".");
+        String fileExt = fileName.substring(index + 1);
 
         // 저장 파일명
         String savedName = keyString + UUID.randomUUID().toString();
@@ -112,7 +114,7 @@ public class FileUtil {
         fileVO.setFileExt(fileExt);
         fileVO.setFilePath(storePathString);
         fileVO.setFileSize(fileSize);
-        fileVO.setFileName(originalName);
+        fileVO.setFileName(fileName);
         fileVO.setSavedName(savedName);
 
         return fileVO;

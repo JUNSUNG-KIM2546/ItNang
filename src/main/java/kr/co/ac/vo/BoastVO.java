@@ -3,7 +3,7 @@ package kr.co.ac.vo;
 public class BoastVO extends UsersVO {
 	
 	//유저고유번호
-	private Long uNO;
+	private Long uNo;
 	
 	//게시판 ID
 	private Long boastId;
@@ -33,12 +33,12 @@ public class BoastVO extends UsersVO {
 	private java.util.Date boastLast;
 
 	
-	public Long getuNO() {
-		return uNO;
+	public Long getuNo() {
+		return uNo;
 	}
 
-	public void setuNO(Long uNO) {
-		this.uNO = uNO;
+	public void setuNo(Long uNo) {
+		this.uNo = uNo;
 	}
 
 	public Long getBoastId() {

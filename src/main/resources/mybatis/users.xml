@@ -31,7 +31,7 @@
 	</resultMap>
 	
 	<sql id="search">
-		SELECT * FROM users 
+		SELECT * FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
 		<where>
 			<if test="search == 1">
 				u_id LIKE CONCAT('%', #{keyword}, '%')
@@ -63,6 +63,11 @@
 		ORDER BY regist_date DESC
 		LIMIT ${perPage}
 		OFFSET ${offset}
+	</select>
+	<select id="userslistAll" resultType="UsersVO">
+		SELECT u.*, uf.* 
+		FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
+		ORDER BY regist_date DESC
 	</select>
 	
 	<!--

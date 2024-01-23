@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.co.ac.service.boast.BoastService;
-import kr.co.ac.service.file.FileService;
 import kr.co.ac.service.file.FileUtil;
 import kr.co.ac.vo.BoastVO;
 import kr.co.ac.vo.FileVO;
@@ -32,8 +31,8 @@ public class BoastController {
 	@Autowired
 	BoastService boastservice;
 	
-	@Autowired
-	FileService fileservice;
+	//@Autowired
+	//FileService fileservice;
   
 	@Autowired
 	FileUtil fileUtil;

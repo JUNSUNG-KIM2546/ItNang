@@ -41,4 +41,9 @@ public class UsersServiceImpl implements UsersService {
 		usersdao.delete(uNO);
 	}
 
+	@Override
+	public List<UsersVO> selectUsersListAll(UsersVO usersVO) {
+		return usersdao.usersListAll(usersVO);
+	}
+
 }

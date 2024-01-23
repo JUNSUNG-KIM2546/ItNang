@@ -19,4 +19,6 @@ public interface UsersDao {
 
 	int total(Pager pager);
 
+	List<UsersVO> usersListAll(UsersVO usersVO);
+
 }

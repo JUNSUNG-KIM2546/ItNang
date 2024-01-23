@@ -2,12 +2,16 @@ package kr.co.ac.controller.users;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ac.pager.Pager;
 import kr.co.ac.service.users.UsersService;
@@ -41,6 +45,15 @@ public class UsersController {
 		
 		return users + "Ulist";
 	}
+	// 회원리스트(데이터)
+	@GetMapping("/UsersListAll")
+	@ResponseBody
+	List<UsersVO> userslistAll(UsersVO usersVO) {
+		
+		List<UsersVO> userslist = usersservice.selectUsersListAll(usersVO);
+
+		return userslist;
+	}
 	
 	// 회원업데이트
 	@GetMapping("/UserUpdate/{uNo}")
@@ -52,12 +65,31 @@ public class UsersController {
 		return users + "Uupdate";
 	}	
 	@PostMapping("/UserUpdate/{uNo}")
-	String usersupdate(@PathVariable Long uNo, UsersVO item) {
+	String usersupdate(@PathVariable Long uNo, UsersVO item, HttpSession session, HttpServletRequest request) {
+		
+		// 이전 페이지의 URL을 세션에 저장
+		if(session.getAttribute("prevPage") == null) {
+			String referrer = request.getHeader("Referer");
+			request.getSession().setAttribute("prevPage", referrer);
+		}
+		
 		item.setuNo(uNo);
 		
 		usersservice.update(item);
 		
-		return "redirect:../UsersList";
+		// 로그인 성공 후, 이전 페이지의 URL을 가져옴
+        String prevPage = (String) session.getAttribute("prevPage");
+        
+        if (prevPage != null && !prevPage.isEmpty()) {
+            // 이전 페이지가 있는 경우 해당 페이지로 리다이렉트
+            session.removeAttribute("prevPage"); // 세션에서 이전 페이지 URL 제거
+            return "redirect:" + prevPage;
+        } 
+        else { 
+        	// 이전 페이지가 없는 경우 기본 리다이렉트 URL 설정
+            return "redirect:/";
+        }
+		
 		//book/update/13 -> "redirect:list" -> /book/update/list
 	}
 	

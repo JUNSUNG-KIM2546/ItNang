@@ -22,7 +22,7 @@
         <div class="title">
             <h1>주인님의 멋진 모습을 자랑하기</h1>
             <p>집사와 주인님의 추억을 여러 사람들에게 공유해보세요.</p>
-            <button><a href="main/Boast" style="color: white;">자랑하기!</a></button>
+            <button><a href="/boast/list" style="color: white;">자랑하기!</a></button>
         </div>
     </section>
 

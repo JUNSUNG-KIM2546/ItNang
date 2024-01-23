@@ -4,10 +4,11 @@
 <mapper namespace="boast">
 	
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
+	<!-- 
 	<resultMap type="kr.co.ac.vo.BoastVO" id="boastVO">
 		<result property="NO" column="NO"/>
 	</resultMap>
-	
+	 -->
 	<resultMap type="kr.co.ac.vo.FileVO" id="fileVO">
 		<result property="fileNo" column="file_no" />
 		<result property="boastId" column="boast_id" />

@@ -95,7 +95,7 @@ public class LoginController {
 	                // 이전 페이지가 없는 경우 기본 리다이렉트 URL 설정
 	                return "redirect:/";
 	            }
-	        } 
+	        }
 	        else {
 	            model.addAttribute("loginMessage", "로그인 정보가 올바르지 않습니다.");
 	            return "redirect:/login";

@@ -51,11 +51,11 @@
 						<input id="searchInputs" type="text" name="keyword" value="${pager.keyword}" class="input-search" placeholder="검색">
 					</form>
 					<div class="nav-2">
-						<a href="#"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="Add"></a>
+						<a href="/boast/list"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="Add"></a>
 						<a href="#"><img src="/resources/project/image/Logo/dm2.png" alt="DM"></a>
 						<!-- <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="탐색"> -->
 						<a href="#" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"></a>
-						<a href="#" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a> 
+						<a href="/board/list" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a> 
 						<c:if test="${loginVO.useAt != 'N' && loginVO.useAt == 'A'}">
 			            	<a href="../UsersList"><img src="https://w7.pngwing.com/pngs/974/188/png-transparent-computer-icons-user-others.png"></a>
 			            </c:if>
@@ -101,8 +101,6 @@
 	</body>
 	
 	<script>
-		var user = ${loginVO.uNo};	
-	
 		$('#reset2').on( "click", function() {
 			$('#modalDiv')[0].reset();
 			console.log("리셋")
@@ -112,7 +110,7 @@
 			console.log("리셋")
 	    });
 	
-		$("#Logins").on( "click", function() {
+		$('#Logins').on( "click", function() {
 			//$('#LoginsModal').reload();
 			$('#login').load("/logins");
 			//$('#login').modal();
@@ -120,8 +118,14 @@
 	    });
 		
 		$('#userUpdates').on( "click", function() {
+			if (${loginVO.uNo != null}) {
+				var user = `${loginVO.uNo}`;	
+			}
+			else {
+				var user = null;
+			}
 			//$('#LoginsModal').reload();
-			$('#userUpdate').load("/UserUpdate/"+user);
+			$('#userUpdate').load("/UserUpdate/" + user);
 			//$('#userUpadte').modal();
 			console.log("유저정보수정 모달")
 			console.log(user)

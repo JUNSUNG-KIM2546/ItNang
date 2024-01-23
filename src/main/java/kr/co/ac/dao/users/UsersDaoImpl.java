@@ -45,4 +45,9 @@ public class UsersDaoImpl implements UsersDao {
 		return sql.selectOne("users.total", pager);
 	}
 
+	@Override
+	public List<UsersVO> usersListAll(UsersVO usersVO) {
+		return sql.selectList("users.userslistAll", usersVO);
+	}
+
 }

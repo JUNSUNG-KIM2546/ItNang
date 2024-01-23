@@ -17,5 +17,7 @@ public interface UsersService {
 
 	void delete(Long uNO);
 
+	List<UsersVO> selectUsersListAll(UsersVO usersVO);
+
 
 }

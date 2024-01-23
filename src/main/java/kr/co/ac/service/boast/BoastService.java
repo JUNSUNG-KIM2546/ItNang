@@ -2,7 +2,6 @@ package kr.co.ac.service.boast;
 
 import java.util.List;
 
-import kr.co.ac.vo.BoardVO;
 import kr.co.ac.vo.BoastVO;
 import kr.co.ac.vo.FileVO;
 
