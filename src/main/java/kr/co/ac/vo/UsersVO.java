@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class UsersVO {
+public class UsersVO extends UsersFileVO {
 	private Long uNo;		// 회원 번호
 	private String uNick;	// 회원 닉네임
 	private String uId;		// 회원 아이디

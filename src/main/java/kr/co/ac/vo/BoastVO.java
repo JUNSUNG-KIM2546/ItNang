@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class BoastVO extends UsersVO {
+public class BoastVO extends BoardFileVO {
 	
 	//유저고유번호
 	private Long uNo;

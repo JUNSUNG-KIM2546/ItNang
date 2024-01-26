@@ -22,7 +22,7 @@
 		<mapper resource="mybatis/board.xml"/>
 		<mapper resource="mybatis/users.xml"/>
 		<mapper resource="mybatis/login.xml"/>
-		<mapper resource="mybatis/file.xml"/>
+		<mapper resource="mybatis/usersfile.xml"/>
 	</mappers>
 	
 </configuration>

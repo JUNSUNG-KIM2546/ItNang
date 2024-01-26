@@ -60,7 +60,7 @@
 						<tr>
 							<th> ${item.boardId} </th>
 							<th> ${item.boardSj} </th>
-							<th> ${item.NO} </th>
+							<th> ${item.uNo} </th>
 							<th> <fmt:formatDate value="${item.boardFrst}" pattern="yyyy.MM.dd"/> </th>
 							<th> <fmt:formatDate value="${item.boardLast}" pattern="yyyy.MM.dd"/> </th>
 							<th> ${item.boardCo} </th>

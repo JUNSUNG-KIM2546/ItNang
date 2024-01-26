@@ -15,12 +15,6 @@ public class RootController {
 		return home + "home";
 	}
 	
-	// 가입완료창
-	@GetMapping("/hello")
-	String hello() {
-		return home + "hello";
-	}
-	
 	// 포트폴리오 (portfolio)
 	@GetMapping("/portfolio")
 	String portfolio() {

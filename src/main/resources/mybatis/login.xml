@@ -19,10 +19,9 @@
 	</resultMap>
 	
 	<select id="actionLogin" resultMap="usersVO">
-		SELECT
-			*
-		FROM USERS
-		WHERE u_id = #{uId}
-			AND u_pass = #{uPass}
+		SELECT u.*, uf.*
+		FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
+		WHERE u.u_id = #{uId}
+			AND u.u_pass = #{uPass}
 	</select>
 </mapper>

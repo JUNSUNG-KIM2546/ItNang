@@ -269,10 +269,18 @@
       	<!-- 로그인 한 프로필 -->
       	<c:if test="${loginVO != null}">
 	        <div class="myProfile">
-	          <img class="pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="thisisyourhyung님의 프로필 사진">
+	          	<!-- 프로필 이미지가 없을 경우 -->
+				<c:if test="${loginVO.uImg == 'N'}">
+					<img class="pic"  alt="${loginVO.uNick}님의 프로필 사진" src="/resources/project/image/Logo/cat-4475583_1280.png">
+				</c:if>
+				
+				<!-- 프로필 이미지가 있을 경우 -->
+				<c:if test="${loginVO.uImg == 'Y'}">
+					<img class="pic"  alt="${loginVO.uNick}님의 프로필 사진" src="/upload/users/${loginVO.fileName}.${loginVO.fileExt}">
+				</c:if>
 	          <div>
 	            <span class="userID point-span">${loginVO.uNick}</span>
-	            <span class="sub-span">${loginVO.uDetail}</span>  
+	            <span class="sub-span">${loginVO.uDetail}</span>
 	          </div>
 	        </div>
         </c:if>
@@ -284,42 +292,28 @@
             <span class="find-more"><a href="#">모두 보기</a></span>
           </div>
           <ul class="story-list">
-            <li>
-              <div class="gradient-wrap">
-                <img class="img-profile story" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="wecode_bootcamp님의 프로필 사진">
-              </div>
-              <div class="profile-text">
-                <span class="userID point-span">wecode_bootcamp</span>
-                <span class="sub-span">12분 전</span>  
-              </div>
-            </li>
-            <li>
-              <div class="gradient-wrap">
-                <img class="img-profile story" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="han_ye_seul님의 프로필 사진">
-              </div>
-              <div class="profile-text">
-                <span class="userID point-span">han_ye_seul</span>
-                <span class="sub-span">28분 전</span>  
-              </div>
-            </li>
-            <li>
-              <div class="gradient-wrap">
-                <img class="img-profile story" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dntlrdl님의 프로필 사진">
-              </div>
-              <div class="profile-text">
-                <span class="userID point-span">dntlrdl</span>
-                <span class="sub-span">40분 전</span>  
-              </div>
-            </li>
-            <li>
-              <div class="gradient-wrap">
-                <img class="img-profile story" src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s320x320/104003354_716384015830603_8920819290329712932_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=98qm88VYcqoAX_OFQ6W&oh=0000cab3adec26de3231e7dcfd4022b2&oe=5F6BC859" alt="i_icaruswalks님의 프로필 사진">
-              </div>
-              <div class="profile-text">
-                <span class="userID point-span">i_icaruswalks</span>
-                <span class="sub-span">56분 전</span>  
-              </div>
-            </li>
+          
+          	<c:forEach items="${usersList}" var="story" begin="0" end="2" >
+          		<c:if test="${story.useAt != 'A' }">
+		            <li>
+		              <div class="gradient-wrap">
+		              	<!-- 프로필 이미지가 없을 경우 -->
+		              	<c:if test="${story.uImg == 'N' }">
+			                <img class="img-profile story" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="${story.uNick}님의 프로필 사진">
+		              	</c:if>
+		              	<!-- 프로필 이미지가 있을 경우 -->
+		              	<c:if test="${story.uImg == 'Y' }">
+			                <img class="img-profile story" src="/upload/users/${story.fileName}.${story.fileExt}" alt="${story.uNick}님의 프로필 사진">
+		              	</c:if>
+		              </div>
+		              <div class="profile-text">
+		                <span class="userID point-span">${story.uNick}</span>
+		                <span class="sub-span"> ${story.uDetail } </span>  
+		              </div>
+		            </li>
+          		</c:if>
+            </c:forEach>
+            
           </ul>
         </div>
         <!-- recommendation section -->

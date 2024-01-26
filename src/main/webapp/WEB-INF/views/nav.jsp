@@ -59,7 +59,17 @@
 						<c:if test="${loginVO.useAt != 'N' && loginVO.useAt == 'A'}">
 			            	<a href="../UsersList"><img src="https://w7.pngwing.com/pngs/974/188/png-transparent-computer-icons-user-others.png"></a>
 			            </c:if>
-						<a id="userUpdates" data-bs-toggle="modal" data-bs-target="#UserUpdateModal" href="#"><img class="pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="마이페이지"> <span>${loginVO.uNick}</span></a>
+						<a id="userUpdates" data-bs-toggle="modal" data-bs-target="#UserUpdateModal" href="#" alt="마이페이지">
+							<!-- 프로필 이미지가 없을 경우 -->
+							<c:if test="${loginVO.uImg == 'N'}">
+								<img class="pic"  alt="프로필IMG" src="/resources/project/image/Logo/cat-4475583_1280.png"> <span>${loginVO.uNick}</span>
+							</c:if>
+							
+							<!-- 프로필 이미지가 있을 경우 -->
+							<c:if test="${loginVO.uImg == 'Y'}">
+								<img class="pic"  alt="프로필IMG(${loginVO.saveName})" src="/upload/users/${loginVO.fileName}.${loginVO.fileExt}"> <span>${loginVO.uNick}</span>
+							</c:if>
+						</a>
 						<a href="/actionLogout" class="btn btn-outline-secondary"> Logout </a>
 					</div>
 				</div>

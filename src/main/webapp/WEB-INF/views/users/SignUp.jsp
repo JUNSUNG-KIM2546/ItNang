@@ -25,20 +25,54 @@
 	       <img src="../resources/project/image/Logo/너두있냥.png" alt="">
 	       <h2><span style="text-shadow:2px 2px 2px #000;">SignUp</span></h2>
 	       
-	       <!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
-	       <form id="login-form" method="post" action="/SingUps">
-	       	<div class="idc">
-	       		<input type="text"  placeholder="ID" name="uId">
-	       		<button type="button" id="checkd_id">중복확인</button>
-	       	</div>
-	           <input type="password" name="uPass" placeholder="Password">
-	           <!-- <input type="password" name="passC" placeholder="Password 확인"> -->
-	           <input type="text" name="uName" placeholder="성명">
-	           <input type="text" name="uEmail" placeholder="이메일주소">
-	           <input type="text" name="uPhone" placeholder="전화번호">
-	           
-	           <input type="submit" value="가입" >
-	       </form>
+			<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
+			<form id="login-form" method="post" action="/SingUps">
+				<div class="idc">
+					<input type="text"  placeholder="ID" name="uId">
+					<button type="button" id="checkd_id">중복확인</button>
+				</div>
+				<input type="text" name="uNick" placeholder="닉네임">
+			    <input type="password" name="uPass" placeholder="Password">
+			    <!-- <input type="password" name="passC" placeholder="Password 확인"> -->
+			    <input type="text" name="uName" placeholder="성명">
+			    <input type="text" name="uEmail" placeholder="이메일주소">
+			    <input type="text" name="uPhone" placeholder="전화번호">
+			    
+			    <input type="submit" value="가입" >
+			</form>
+			
+			<!-- 
+			<form action="/SingUps" id="login-form" method="post" enctype="multipart/form-data">	
+				<div>
+					<label>Profile IMG</label>
+					<img alt="프로필IMG" src="upload/${item.userUploadName}">
+					<input type="file" name="userUploadName" value="${item.userUploadName}">
+				</div>
+				<hr>
+				<label>닉네임</label>
+				<input type="text" name="uNick" placeholder="닉네임">
+			
+				<label>아이디</label>
+				<input type="text" name="uId" placeholder="ID">
+			
+				<label>비밀번호</label>
+		    	<input type="password" name="uPass" placeholder="Password">
+	
+				<label>이름</label>
+				<input type="text" name="uName" placeholder="Name">
+				
+	    		<label>E-Mail</label>
+				<input type="text" name="uEmail" placeholder="E-Mail">
+		    
+				<label>연락처</label>
+				<input type="text" name="uPhone" placeholder="Phone">
+	    	
+				<label>소개</label>
+				<input type="text" name="uDetail" placeholder="Detail">
+			    <input type="submit" value="Update" >
+			</form>
+	        -->
+	        
  		</div>
     </div>
     

@@ -51,37 +51,39 @@
 	
 	<insert id="boardadd">
 		INSERT INTO board (
-			NO,
-			BOARD_SJ,
-			BOARD_CN,
-			BOARD_CO,
-			BOARD_IP,
-			BOARD_AT,
-			BOARD_IMG,
-			BOARD_FRST,
-			BOARD_LAST
+			u_no,
+			board_sj,
+			board_cn,
+			board_co,
+			board_ip,
+			board_at,
+			board_img,
+			board_frst,
+			board_last,
+			use_at
 		)
 		VALUES (
-			#{NO},
+			#{uNo},
 			#{boardSj},
 			#{boardCn},
 			0,
-			'TEST_IP',
+			#{boardIp},
 			'N',
 			#{boardImg},
 			NOW(),
-			NOW()
+			NOW(),
+			#{useAt}
 		)
 	</insert>
 	
 	<update id="boardupdate">
 		UPDATE board
-		SET BOARD_SJ = #{boardSj}, BOARD_CN = #{boardCn}, BOARD_IMG = #{boardImg}, BOARD_LAST = NOW()
-		WHERE NO = #{UsersVO.NO} AND BOARD_ID = #{boardId}
+		SET board_sj = #{boardsj}, board_cn = #{boardcn}, board_ip = #{boardip}, board_img = #{boardimg}, board_last = NOW()
+		WHERE u_no = #{LoginVO.uNo} AND board_id = #{boardId}
 	</update>
 	
 	<delete id="boarddelete">
 		DELETE FROM board
-		WHERE BOARD_ID = #{boardId}
+		WHERE (u_no = #{LoginVO.uNo} AND board_id = #{boardId}) OR (u_no IN (SELECT u_no FROM USERS WHERE USE_AT = 'A'))
 	</delete>
 </mapper>

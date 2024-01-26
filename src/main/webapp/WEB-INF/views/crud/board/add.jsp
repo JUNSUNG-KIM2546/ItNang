@@ -16,8 +16,18 @@
 		<form method="post">
 		<div>
 			<div>
-				<label>작성자:</label> <span>${loginVO.id}</span>
-				<input type="hidden" name="NO" value="${loginVO.NO}" readonly>
+				<label>작성자:</label> <span>${loginVO.uNick}</span>
+				<input type="hidden" name="uNo" value="${loginVO.uNo}" readonly>
+			</div>
+			
+			<div>
+				<label>카테고리:</label>
+				<select name="useAt">
+					<option value="0" > 게시글 카테고리 항목을 선택 </option>
+					<option value="B"> 자유게시판 </option>
+					<option value="S"> 나눔게시판 </option>
+					<option value="R"> 추천게시판 </option>
+				</select>
 			</div>
 			
 			<div>

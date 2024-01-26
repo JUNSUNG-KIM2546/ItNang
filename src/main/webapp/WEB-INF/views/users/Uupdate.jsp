@@ -26,40 +26,61 @@
 			<h2><span style="text-shadow:2px 2px 2px #000;">Profile Update</span></h2>
 	
 			<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
-			<form action="/UserUpdate/${loginVO.uNo}" id="login-form" method="post">
+			<form action="/UserUpdate/${loginVO.uNo}" id="login-form" method="post" enctype="multipart/form-data">	<!-- enctype="multipart/form-data" == mime -->
 				<div>
 					<!-- 프로필 이미지가 없을 경우 -->
-					<c:if test="">
-						<img alt="프로필IMG" src="/resources/project/image/Logo/cat-4475583_1280.png">
+					<c:if test="${item.uImg == 'N'}">
+						<span> 프로필이미지가 업습니다. </span>
 					</c:if>
 					
 					<!-- 프로필 이미지가 있을 경우 -->
-					<c:if test="">
-						<img alt="프로필IMG" src="">
+					<c:if test="${item.uImg == 'Y'}">
+						<img class="profileimg" alt="프로필IMG(${item.saveName})" src="/upload/users/${item.fileName}.${item.fileExt}">
 					</c:if>
-					<input type="file" name="uImg" value="${uImg}">
+					<br>
+					<input type="file" name="userUploadName">
 				</div>
 				<hr>
-				<input type="hidden" name="uNo" value="${uNo}" readonly>
+				<input type="hidden" name="uNo" value="${item.uNo}" readonly>
 				
 				<label>닉네임</label>
 				<input type="text" name="uNick" value="${item.uNick}" placeholder="닉네임">
-			
-				<label>아이디</label>
-				<input type="text" name="uId" value="${item.uId}" placeholder="ID" readonly>
-			
-				<label>비밀번호</label>
-		    	<input type="password" name="uPass" value="${item.uPass}" placeholder="Password">
-		    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
-
-				<label>이름</label>
-				<input type="text" name="uName" value="${item.uName}" placeholder="Name">
-		    
-				<label>E-Mail</label>
-				<input type="text" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
-		    
-				<label>연락처</label>
-				<input type="text" name="uPhone" value="${item.uPhone}" placeholder="Phone">
+				
+		    	<c:if test="${item.uEmail != 'kakao가입자' && item.uPhone != 'kakao가입자'}">
+		    		<label>아이디</label>
+					<input type="text" name="uId" value="${item.uId}" placeholder="ID" readonly>
+				
+					<label>비밀번호</label>
+			    	<input type="password" name="uPass" value="${item.uPass}" placeholder="Password">
+			    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
+	
+					<label>이름</label>
+					<input type="text" name="uName" value="${item.uName}" placeholder="Name">
+		    		
+		    		<label>E-Mail</label>
+					<input type="text" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
+			    
+					<label>연락처</label>
+					<input type="text" name="uPhone" value="${item.uPhone}" placeholder="Phone">
+		    	</c:if>
+		    	
+		    	<c:if test="${item.uEmail == 'kakao가입자' && item.uPhone == 'kakao가입자'}">
+		    		<label hidden>아이디</label>
+					<input type="hidden" name="uId" value="${item.uId}" placeholder="ID" readonly>
+				
+					<label hidden>비밀번호</label>
+			    	<input type="hidden" name="uPass" value="${item.uPass}" placeholder="Password">
+			    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
+	
+					<label hidden>이름</label>
+					<input type="hidden" name="uName" value="${item.uName}" placeholder="Name">
+		    	
+		    		<label hidden>E-Mail</label>
+					<input type="hidden" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
+			    
+					<label hidden>연락처</label>
+					<input type="hidden" name="uPhone" value="${item.uPhone}" placeholder="Phone">
+		    	</c:if>
 		    
 				<label>소개</label>
 				<input type="text" name="uDetail" value="${item.uDetail}" placeholder="Detail">

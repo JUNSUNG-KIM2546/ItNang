@@ -29,6 +29,15 @@
 				<input type="text" name="NO" value="${item.NO}" readonly>
 			</div>
 			<div>
+				<label>카테고리:</label>
+				<select name="useAt" >
+					<option value="0" > 게시글 카테고리 항목을 선택 </option>
+					<option value="B" ${item.useAt == B ? "selected" : ""}> 자유게시판 </option>
+					<option value="S" ${item.useAt == S ? "selected" : ""}> 나눔게시판 </option>
+					<option value="R" ${item.useAt == R ? "selected" : ""}> 추천게시판 </option>
+				</select>
+			</div>
+			<div>
 				<label>제목:</label>
 				<input type="text" name="boardSj" value="${item.boardSj}" >
 			</div>

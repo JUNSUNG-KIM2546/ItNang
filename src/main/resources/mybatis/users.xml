@@ -21,7 +21,7 @@
 	<resultMap type="kr.co.ac.vo.FileVO" id="fileVO">
 		<result property="fileNo" column="file_no" />
 		<result property="uNo" column="u_no" />
-		<result property="savedName" column="saved_name" />
+		<result property="saveName" column="save_name" />
 		<result property="fileName" column="file_name" />
 		<result property="upTime" column="up_time" />
 		<result property="filePath" column="file_path" />
@@ -31,7 +31,8 @@
 	</resultMap>
 	
 	<sql id="search">
-		SELECT * FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
+		SELECT u.*, uf.* 
+		FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
 		<where>
 			<if test="search == 1">
 				u_id LIKE CONCAT('%', #{keyword}, '%')
@@ -83,9 +84,9 @@
 	-->
 	
 	<select id="item" resultMap="usersVO">
-		SELECT *
-		FROM users
-		WHERE u_no = #{uNo}
+		SELECT u.*, uf.*
+		FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
+		WHERE u.u_no = #{uNo} AND uf.u_no = #{uNo}
 	</select>
 	
 	<insert id="singup">
@@ -96,6 +97,8 @@
 			u_name,
 			u_email,
 			u_phone,
+			u_img,
+			u_detail,
 			regist_date,
 			update_date,
 			use_at
@@ -107,16 +110,25 @@
 			#{uName},
 			#{uEmail},
 			#{uPhone},
+			'N',
+			' ',
 			NOW(),
 			NOW(),
 			'N'
 		)
+		<selectKey keyProperty="uNo" resultType="Long" order="AFTER">
+	    	SELECT LAST_INSERT_ID()
+	    </selectKey>
 	</insert>
 	
 	<update id="usersupdate">
-		UPDATE users
-		SET u_nick = #{uNick}, u_id = #{uId}, u_pass = #{uPass}, u_name = #{uName}, u_email = #{uEmail}, u_phone = #{uPhone}, u_detail = #{uDetail}, update_date = NOW()
-		WHERE u_No = #{uNo}
+		UPDATE users u JOIN users_file uf USING(u_no)
+		SET u.u_nick = #{uNick}, u.u_id = #{uId}, u.u_pass = #{uPass}, u.u_name = #{uName}, u.u_email = #{uEmail}, u.u_phone = #{uPhone}, u.u_detail = #{uDetail}, u.update_date = NOW()
+			<if test="userUploadName != null">
+				, u.u_img = 'Y', uf.save_name = #{saveName}, uf.file_name = #{fileName}, uf.up_time = NOW(), uf.file_path = #{filePath}, uf.file_ext = #{fileExt}, uf.file_size = #{fileSize}
+			</if>
+		WHERE u.u_no = #{uNo} AND uf.u_no = #{uNo}
+		<!-- 여기 좀더 고민 해야함 -->
 	</update>
 	
 	<delete id="usersdelete">
