@@ -2,7 +2,7 @@ package kr.co.ac.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class BoardFileVO extends BoardVO {
+public class BoardFileVO extends UsersVO {
 
 	// 파일고유번호
 	private Long fileNo;

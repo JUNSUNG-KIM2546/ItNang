@@ -22,8 +22,8 @@
 	</resultMap>
 	
 	<select id="boastList" resultType="BoastVO">
-		SELECT b.*, u.*, uf.*
-		FROM users u LEFT OUTER JOIN boast b USING(u_no) LEFT OUTER JOIN users_file uf USING(u_no)
+		SELECT b.*, bf.*, u.*, uf.*
+		FROM boast b LEFT OUTER JOIN users u USING(u_no) LEFT OUTER JOIN users_file uf USING(u_no) LEFT OUTER JOIN boast_file bf USING(boast_id) 
 		ORDER BY boast_last DESC
 	</select>
 <!-- 
@@ -57,12 +57,15 @@ ORDER BY i.regist_date DESC
 			#{boastSj},
 			#{boastCn},
 			0,
-			'TEST_IP',
-			'N',
+			#{boastIp},
+			#{boastAt},
 			#{boastImg},
 			NOW(),
 			NOW()
 		)
+		<selectKey keyProperty="boastId" resultType="Long" order="AFTER">
+	    	SELECT LAST_INSERT_ID()
+	    </selectKey>
 	</insert>
 	
 	<update id="boastUpdate">

@@ -12,7 +12,7 @@ public class UsersFileVO {
 	private String fileExt; // 파일확장자명
 	private Long fileSize; // 파일사이즈
 
-	private MultipartFile userUploadName; // 파일원본명
+	private MultipartFile userUploadName; // 파일업로드명
 
 	public Long getuNo() {
 		return uNo;

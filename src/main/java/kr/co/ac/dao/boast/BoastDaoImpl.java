@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.ac.vo.BoastVO;
-import kr.co.ac.vo.FileVO;
 
 @Repository
 public class BoastDaoImpl implements BoastDao {
@@ -16,12 +15,12 @@ public class BoastDaoImpl implements BoastDao {
 	SqlSession sql;
 
 	@Override
-	public List<BoastVO> selectBoastList(BoastVO boastVo) {
-		return sql.selectList("boast.boastList",boastVo);
+	public List<BoastVO> selectBoastList(BoastVO boastVO) {
+		return sql.selectList("boast.boastList",boastVO);
 	}
 
 	@Override
-	public void add(BoastVO item, List<FileVO> fileVOList) {
+	public void add(BoastVO item) {
 		sql.insert("boast.boastInsert", item);
 	}
 

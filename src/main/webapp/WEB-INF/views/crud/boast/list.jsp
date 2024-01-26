@@ -25,240 +25,54 @@
       <div class="feeds">
       
         <!-- article -->
-        <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dlwlrma님의 프로필 사진">
-              <span class="userID main-id point-span">dlwlrma</span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
-          </header>
-          <div class="main-image">
-            <img src="/resources/project/image/Logo/너두있냥.png" alt="dlwlrma님의 피드 사진" class="mainPic">
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
-              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
-          </div>
-          <!-- article text data -->
-          <div class="reaction">
-            <div class="liked-people">
-              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p><span class="point-span userID">dlwlrma</span><span class="at-tag">@wkorea @gucci</span> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-                </li>
-                <!-- input 값 여기에 추가 -->
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." >
-            <button type="submit" class="submit-comment" disabled>게시</button>
-          </div>
-        </article>
-        
-       <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dlwlrma님의 프로필 사진">
-              <span class="userID main-id point-span">dlwlrma</span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
-          </header>
-          <div class="main-image">
-            <img src="/resources/project/image/Logo/너두있냥.png" alt="dlwlrma님의 피드 사진" class="mainPic">
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
-              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
-          </div>
-          <!-- article text data -->
-          <div class="reaction">
-            <div class="liked-people">
-              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p><span class="point-span userID">dlwlrma</span><span class="at-tag">@wkorea @gucci</span> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-                </li>
-                <!-- input 값 여기에 추가 -->
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            <input class="input-comment" type="text" placeholder="댓글 달기..." >
-            <button type="submit" class="submit-comment" disabled>게시</button>
-          </div>
-        </article>
-        
-        <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dlwlrma님의 프로필 사진">
-              <span class="userID main-id point-span">dlwlrma</span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
-          </header>
-          <div class="main-image">
-            <img src="/resources/project/image/Logo/너두있냥.png" alt="dlwlrma님의 피드 사진" class="mainPic">
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
-              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
-          </div>
-          <!-- article text data -->
-          <div class="reaction">
-            <div class="liked-people">
-              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p><span class="point-span userID">dlwlrma</span><span class="at-tag">@wkorea @gucci</span> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-                </li>
-                <!-- input 값 여기에 추가 -->
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            <input class="input-comment" type="text" placeholder="댓글 달기..." >
-            <button type="submit" class="submit-comment" disabled>게시</button>
-          </div>
-        </article>
-        
-        <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dlwlrma님의 프로필 사진">
-              <span class="userID main-id point-span">dlwlrma</span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
-          </header>
-          <div class="main-image">
-            <img src="/resources/project/image/Logo/너두있냥.png" alt="dlwlrma님의 피드 사진" class="mainPic">
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
-              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
-          </div>
-          <!-- article text data -->
-          <div class="reaction">
-            <div class="liked-people">
-              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p><span class="point-span userID">dlwlrma</span><span class="at-tag">@wkorea @gucci</span> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-                </li>
-                <!-- input 값 여기에 추가 -->
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            <input class="input-comment" type="text" placeholder="댓글 달기..." >
-            <button type="submit" class="submit-comment" disabled>게시</button>
-          </div>
-        </article>
-        
-        <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile pic" src="/resources/project/image/Logo/cat-4475583_1280.png" alt="dlwlrma님의 프로필 사진">
-              <span class="userID main-id point-span">dlwlrma</span>
-            </div>
-            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
-          </header>
-          <div class="main-image">
-            <img src="/resources/project/image/Logo/너두있냥.png" alt="dlwlrma님의 피드 사진" class="mainPic">
-          </div>
-          <div class="icons-react">
-            <div class="icons-left">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
-              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
-            </div>
-            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
-          </div>
-          <!-- article text data -->
-          <div class="reaction">
-            <div class="liked-people">
-              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
-            </div>
-            <div class="description">
-              <p><span class="point-span userID">dlwlrma</span><span class="at-tag">@wkorea @gucci</span> 🌱</p>
-            </div>
-            <div class="comment-section">
-              <ul class="comments">
-                <li>
-                  <span><span class="point-span userID">postmalone</span>내가 입으면 더 잘어울릴 것 같아</span>
-                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
-                </li>
-                <!-- input 값 여기에 추가 -->
-              </ul>
-              <div class="time-log">
-                <span>32분 전</span>
-              </div>
-            </div>
-          </div>
-          <div class="hl"></div>
-          <div class="comment">
-            <input class="input-comment" type="text" placeholder="댓글 달기..." >
-            <button type="submit" class="submit-comment" disabled>게시</button>
-          </div>
-        </article>
+        <c:forEach items="${boastList }" var="boastList">
+        	<article>
+	          <header>
+	            <div class="profile-of-article">
+	              <img class="img-profile pic" src="/upload/users/${boastList.fileName}.${boastList.fileExt}" alt="dlwlrma님의 프로필 사진">
+	              <span class="userID main-id point-span">${boastList.uNick }</span>
+	            </div>
+	            <img class="icon-react icon-more" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
+	          </header>
+	          <div class="main-image">
+	            <img src="/upload/boast/${boastList.boastFileName}.${boastList.boastFileExt}" alt="${boastList.uNick }님의 피드 사진" class="mainPic">
+	          </div>
+	          <div class="icons-react">
+	            <div class="icons-left">
+	              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
+	              <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
+	              <img class="icon-react" src="/resources/project/image/Logo/dm2.png" alt="DM">  
+	            </div>
+	            <img class="icon-react" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
+	          </div>
+	          <!-- article text data -->
+	          <div class="reaction">
+	            <div class="liked-people">
+	              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
+	            </div>
+	            <div class="description">
+	              <p><span class="point-span userID">${boastList.uNick }</span><span class="at-tag">${boastList.boastCn }</span> 🌱</p>
+	            </div>
+	            <div class="comment-section">
+	              <ul class="comments">
+	                <li>
+	                  <span><span class="point-span userID">postmalone</span>댓글기능 곧 구현</span>
+	                  <img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
+	                </li>
+	                <!-- input 값 여기에 추가 -->
+	              </ul>
+	              <div class="time-log">
+	                <span>32분 전</span>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="hl"></div>
+	          <div class="comment">
+	            <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기..." >
+	            <button type="submit" class="submit-comment" disabled>게시</button>
+	          </div>
+	        </article>
+        </c:forEach>
         
 		<!-- 여기에 다음 게시물 추가 -->
       </div>
@@ -281,6 +95,9 @@
 	          <div>
 	            <span class="userID point-span">${loginVO.uNick}</span>
 	            <span class="sub-span">${loginVO.uDetail}</span>
+	          </div>
+	          <div>
+	          	<button type="button" class="btn btn-outline-info" id="Boasts" data-bs-toggle="modal" data-bs-target="#BoastModal"> New Boast </button>
 	          </div>
 	        </div>
         </c:if>
@@ -401,6 +218,32 @@
 	            commentBtn.disabled = true;
 	        }
 	    })
+    </script>
+    
+   	<div id="modalDiv">
+		<!-- 로그인 모달창 -->
+		<div class="modal fade" id="BoastModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content" id="boast">
+		    
+		    </div>
+		  </div>
+		</div>
+	</div>
+    <script>
+	    $('#Boasts').on( "click", function() {
+			if (${loginVO.uNo != null}) {
+				var user = `${loginVO.uNo}`;	
+			}
+			else {
+				var user = null;
+			}
+			//$('#LoginsModal').reload();
+			$('#boast').load("/boast/" + user +"/add");
+			//$('#userUpadte').modal();
+			console.log("자랑게시판 등록 모달")
+			console.log(user)
+	    });
     </script>
 
 </body>

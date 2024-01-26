@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ac.dao.boast.BoastDao;
-import kr.co.ac.vo.BoardVO;
 import kr.co.ac.vo.BoastVO;
-import kr.co.ac.vo.FileVO;
 
 @Service
 public class BoastServiceImpl implements BoastService {
@@ -17,13 +15,13 @@ public class BoastServiceImpl implements BoastService {
 	BoastDao boastdao;
 
 	@Override
-	public List<BoastVO> selectBoastList(BoastVO boastVo) {
-		return boastdao.selectBoastList(boastVo);
+	public List<BoastVO> selectBoastList(BoastVO boastVO) {
+		return boastdao.selectBoastList(boastVO);
 	}
 
 	@Override
-	public void add(BoastVO item, List<FileVO> fileVOList) {
-		boastdao.add(item, fileVOList);
+	public void add(BoastVO item) {
+		boastdao.add(item);
 	}
 
 	@Override

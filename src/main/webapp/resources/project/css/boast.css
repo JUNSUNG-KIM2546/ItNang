@@ -159,7 +159,9 @@ header {
     border-radius: 100%;
 }
 .main-image img {
-    width: 612px;
+    /* width: 612px; */
+    width: 100%;
+    height: auto;
 }
 .main-id {
     margin-left: 14px;

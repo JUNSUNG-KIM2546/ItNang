@@ -3,13 +3,12 @@ package kr.co.ac.dao.boast;
 import java.util.List;
 
 import kr.co.ac.vo.BoastVO;
-import kr.co.ac.vo.FileVO;
 
 public interface BoastDao {
 
 	List<BoastVO> selectBoastList(BoastVO boastVo);
 
-	void add(BoastVO item,  List<FileVO> fileVOList);
+	void add(BoastVO item);
 
 	BoastVO item(Long boastId);
 

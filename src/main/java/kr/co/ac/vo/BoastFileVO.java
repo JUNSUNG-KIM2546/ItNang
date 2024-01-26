@@ -2,121 +2,102 @@ package kr.co.ac.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class BoastFileVO extends BoardVO {
+public class BoastFileVO extends UsersVO {
 
 	// 파일고유번호
-	private Long fileNo;
+	private Long boastFileNo;
 
 	// 게시판 ID
 	private Long boastId;
 
 	// 파일저장명
-	private String saveName;
+	private String boastSaveName;
 
 	// 파일원본명
-	private String fileName;
+	private String boastFileName;
 
 	// 파일업로드시점
-	private java.util.Date upTime;
+	private java.util.Date boastUpTime;
 
 	// 파일저장경로
-	private String filePath;
+	private String boastFilePath;
 
 	// 파일확장자명
-	private String fileExt;
+	private String boastFileExt;
 
 	// 파일사이즈
-	private Long fileSize;
-	
-	
+	private Long boastFileSize;
+
 	// 자랑게시판 업로드
 	private MultipartFile boastUploadName;
 
-
-	public Long getFileNo() {
-		return fileNo;
+	public Long getBoastFileNo() {
+		return boastFileNo;
 	}
 
-
-	public void setFileNo(Long fileNo) {
-		this.fileNo = fileNo;
+	public void setBoastFileNo(Long boastFileNo) {
+		this.boastFileNo = boastFileNo;
 	}
-
 
 	public Long getBoastId() {
 		return boastId;
 	}
 
-
 	public void setBoastId(Long boastId) {
 		this.boastId = boastId;
 	}
 
-
-	public String getSaveName() {
-		return saveName;
+	public String getBoastSaveName() {
+		return boastSaveName;
 	}
 
-
-	public void setSaveName(String saveName) {
-		this.saveName = saveName;
+	public void setBoastSaveName(String boastSaveName) {
+		this.boastSaveName = boastSaveName;
 	}
 
-
-	public String getFileName() {
-		return fileName;
+	public String getBoastFileName() {
+		return boastFileName;
 	}
 
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setBoastFileName(String boastFileName) {
+		this.boastFileName = boastFileName;
 	}
 
-
-	public java.util.Date getUpTime() {
-		return upTime;
+	public java.util.Date getBoastUpTime() {
+		return boastUpTime;
 	}
 
-
-	public void setUpTime(java.util.Date upTime) {
-		this.upTime = upTime;
+	public void setBoastUpTime(java.util.Date boastUpTime) {
+		this.boastUpTime = boastUpTime;
 	}
 
-
-	public String getFilePath() {
-		return filePath;
+	public String getBoastFilePath() {
+		return boastFilePath;
 	}
 
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setBoastFilePath(String boastFilePath) {
+		this.boastFilePath = boastFilePath;
 	}
 
-
-	public String getFileExt() {
-		return fileExt;
+	public String getBoastFileExt() {
+		return boastFileExt;
 	}
 
-
-	public void setFileExt(String fileExt) {
-		this.fileExt = fileExt;
+	public void setBoastFileExt(String boastFileExt) {
+		this.boastFileExt = boastFileExt;
 	}
 
-
-	public Long getFileSize() {
-		return fileSize;
+	public Long getBoastFileSize() {
+		return boastFileSize;
 	}
 
-
-	public void setFileSize(Long fileSize) {
-		this.fileSize = fileSize;
+	public void setBoastFileSize(Long boastFileSize) {
+		this.boastFileSize = boastFileSize;
 	}
-
 
 	public MultipartFile getBoastUploadName() {
 		return boastUploadName;
 	}
-
 
 	public void setBoastUploadName(MultipartFile boastUploadName) {
 		this.boastUploadName = boastUploadName;

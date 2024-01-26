@@ -1,6 +1,6 @@
 package kr.co.ac.vo;
 
-public class BoardNoteVO extends BoardVO {
+public class BoardNoteVO extends UsersVO {
 	
 	//게시판고유번호
 	private Long boardId;

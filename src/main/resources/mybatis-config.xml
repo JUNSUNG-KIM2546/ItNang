@@ -10,19 +10,23 @@
 	
 	<!-- Alias 설정 (vo) --><!-- 모델(겟터스 / 셋터스) 불러오기 -->
 	<typeAliases>
-		<typeAlias type="kr.co.ac.vo.BoastVO" 	alias="BoastVO"/>
-		<typeAlias type="kr.co.ac.vo.BoardVO" 	alias="BoardVO"/>
-		<typeAlias type="kr.co.ac.vo.UsersVO" 	alias="UsersVO"/>
-		<typeAlias type="kr.co.ac.vo.FileVO" 	alias="FileVO"/>
+		<typeAlias type="kr.co.ac.vo.BoastVO" 		alias="BoastVO"/>
+		<typeAlias type="kr.co.ac.vo.BoastFileVO" 	alias="BoastFileVO"/>
+		<typeAlias type="kr.co.ac.vo.BoardVO" 		alias="BoardVO"/>
+		<typeAlias type="kr.co.ac.vo.BoardFileVO" 	alias="BoardFileVO"/>
+		<typeAlias type="kr.co.ac.vo.UsersVO" 		alias="UsersVO"/>
+		<typeAlias type="kr.co.ac.vo.UsersFileVO" 	alias="UsersFileVO"/>
+		<typeAlias type="kr.co.ac.vo.FileVO" 		alias="FileVO"/>
 		<!-- <typeAlias type="kr.co.ac.booktest.model.Book" alias="Book"/> -->
 	</typeAliases>
 	
 	<mappers>
+		<mapper resource="mybatis/login.xml"/>
 		<mapper resource="mybatis/boast.xml"/>
 		<mapper resource="mybatis/board.xml"/>
 		<mapper resource="mybatis/users.xml"/>
-		<mapper resource="mybatis/login.xml"/>
 		<mapper resource="mybatis/usersfile.xml"/>
+		<mapper resource="mybatis/boastfile.xml"/>
 	</mappers>
 	
 </configuration>

@@ -39,8 +39,7 @@
 	<mvc:annotation-driven>
 		<!-- Jackson JSON 메시지 컨버터 추가 -->
 		<mvc:message-converters>
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 		</mvc:message-converters>
 		
 	</mvc:annotation-driven>

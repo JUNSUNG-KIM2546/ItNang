@@ -7,9 +7,9 @@ import kr.co.ac.vo.FileVO;
 
 public interface BoastService {
 
-	List<BoastVO> selectBoastList(BoastVO boastVo);
+	List<BoastVO> selectBoastList(BoastVO boastVO);
 
-	void add(BoastVO item, List<FileVO> fileVOList);
+	void add(BoastVO item);
 
 	BoastVO item(Long boastId);
 

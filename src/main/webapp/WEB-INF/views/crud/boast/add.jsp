@@ -27,33 +27,29 @@
 	
 			<!-- 폼에 액션이 없으면 주소 그대로 보낸다 -->
 			<form action="/boast/${loginVO.uNo}/add" id="login-form" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="uNo" value="${loginVO.uNo}">
 				<div>
-					<img alt="자랑게시물IMG" src="">
-					<input type="file" name="uImg" value="${uImg}">
+					<img class="profileimg" id="preview" alt="자랑게시물IMG" src="">
+					<input type="file" name="boastUploadName" onchange="">
+					<input type="hidden" name="boastImg" value=""> <!-- boastUploadName에 값이 있으면 Y, 없으면 N -->
 				</div>
 				<hr>
-				<label>닉네임</label>
-				<input type="text" name="uNick" value="${item.uNick}" placeholder="닉네임">
+				<c:if test="${loginVO.useAt == 'A' }">
+					<label>공지여부</label>
+					<input type="radio" name="boastAt" value="Y"><span> 공지사항 </span>
+					<input type="radio" name="boastAt" value="N"><span> 일반 </span>
+				</c:if>
+				<c:if test="${loginVO.useAt == 'N' }">
+					<input type="hidden" name="boastAt" value="N">
+				</c:if>
+				
+				<label hidden="">제목</label>
+				<input type="hidden" name="boastSj" value="${loginVO.uNo}-${loginVO.uNick}-Boast게시물">
 			
-				<label>아이디</label>
-				<input type="text" name="uId" value="${item.uId}" placeholder="ID" readonly>
+				<!-- <label>내용</label> -->
+				<textarea class="textArea" name="boastCn" placeholder="내용"></textarea>
 			
-				<label>비밀번호</label>
-		    	<input type="password" name="uPass" value="${item.uPass}" placeholder="Password">
-		    	<!-- <input type="password" name="passC" placeholder="Password 확인"> -->
-
-				<label>이름</label>
-				<input type="text" name="uName" value="${item.uName}" placeholder="Name">
-		    
-				<label>E-Mail</label>
-				<input type="text" name="uEmail" value="${item.uEmail}" placeholder="E-Mail">
-		    
-				<label>연락처</label>
-				<input type="text" name="uPhone" value="${item.uPhone}" placeholder="Phone">
-		    
-				<label>소개</label>
-				<input type="text" name="uDetail" value="${item.uDetail}" placeholder="Detail">
-			    <input type="submit" value="Update" >
+			    <input type="submit" value="BoastAdd" >
 			</form>
 		</div>
 	</div>

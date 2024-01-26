@@ -2,7 +2,8 @@ package kr.co.ac.controller.boast;
 
 import java.io.File;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.co.ac.service.boast.BoastService;
-import kr.co.ac.service.file.FileUtil;
-import kr.co.ac.service.file.UsersFileService;
+import kr.co.ac.service.file.BoastFileService;
 import kr.co.ac.service.users.UsersService;
+import kr.co.ac.vo.BoastFileVO;
 import kr.co.ac.vo.BoastVO;
-import kr.co.ac.vo.FileVO;
 import kr.co.ac.vo.UsersVO;
 
 @Controller
@@ -41,24 +41,23 @@ public class BoastController {
 	UsersService usersservice;
 	
 	@Autowired
-	UsersFileService uFileservice;
-  
-	@Autowired
-	FileUtil fileUtil;
+	BoastFileService fileservice;
 	
 	// 자랑게시판(뷰 페이지)
 	@GetMapping("/list")
-	String boastlist(UsersVO usersVO, BoastVO boastVo, Model model) {
+	String boastlist(UsersVO usersVO, BoastVO boastVO, Model model) {
 		List<UsersVO> usersList = usersservice.selectUsersListAll(usersVO);
-		model.addAttribute("usersList",usersList);
+		List<BoastVO> boastList = boastservice.selectBoastList(boastVO);
+		model.addAttribute("usersList", usersList);
+		model.addAttribute("boastList", boastList);
 		return crud + path + "list";
 	}
 	// 자랑게시판(뷰 데이터)
 	@GetMapping("/listAll")
 	@ResponseBody
-	List<BoastVO> boastlistAll(BoastVO boastVo) {
+	List<BoastVO> boastlistAll(BoastVO boastVO) {
 		
-		List<BoastVO> boastlist = boastservice.selectBoastList(boastVo);
+		List<BoastVO> boastlist = boastservice.selectBoastList(boastVO);
 
 		return boastlist;
 	}
@@ -69,7 +68,7 @@ public class BoastController {
 		return crud + path + "add";
 	}
 	@PostMapping("{uNo}/add")
-	String boardadd(@PathVariable Long uNo, BoastVO item, final MultipartHttpServletRequest multiRequest) throws Exception {
+	String boardadd(@PathVariable Long uNo, BoastVO item, BoastFileVO fileVO, HttpServletRequest request, final MultipartHttpServletRequest multiRequest) throws Exception {
 		/*
 		//매물사진 업로드처리
 		List<FileVO> fileVOList = null;
@@ -83,23 +82,26 @@ public class BoastController {
 		
 		return "redirect:/boast/list";
 		*/
+		item.setBoastIp(request.getRemoteAddr());	// 게시글 작성한 컴퓨터 ip
+		boastservice.add(item);
 		
-		MultipartFile fileUpload = item.getUserUploadName();
+		MultipartFile fileUpload = fileVO.getBoastUploadName();
 		System.out.println(fileUpload.getOriginalFilename());
 		
 		if(fileUpload != null && !fileUpload.isEmpty()) {
 			String file = fileUpload.getOriginalFilename();
 			fileUpload.transferTo(new File(fileStorePath + file));	// 첨부파일을 유효한 위치로 옴기기
 			
-			item.setuImg("Y");
-			item.setSaveName(item.getBoastId() + "-" + FilenameUtils.getBaseName(fileUpload.getOriginalFilename()));	// 첨부파일 데이터베이스 저장명
-			item.setFileName(FilenameUtils.getBaseName(fileUpload.getOriginalFilename()));	// 첨부파일 원본명
-			item.setFilePath(fileStorePath);	// 첨부파일 업로드 경로
-			item.setFileExt(FilenameUtils.getExtension(fileUpload.getOriginalFilename()));	// 첨부파일 확장자
-			item.setFileSize(fileUpload.getSize());	// 프로필이미지 크기
+			fileVO.setuImg("Y");
+			fileVO.setBoastSaveName(item.getBoastId() + "-" + FilenameUtils.getBaseName(fileUpload.getOriginalFilename()));	// 첨부파일 데이터베이스 저장명
+			fileVO.setBoastFileName(FilenameUtils.getBaseName(fileUpload.getOriginalFilename()));	// 첨부파일 원본명
+			fileVO.setBoastFilePath(fileStorePath);	// 첨부파일 업로드 경로
+			fileVO.setBoastFileExt(FilenameUtils.getExtension(fileUpload.getOriginalFilename()));	// 첨부파일 확장자
+			fileVO.setBoastFileSize(fileUpload.getSize());	// 프로필이미지 크기
 		}
 		
-		boastservice.add(item);
+		fileVO.setBoastId(item.getBoastId());
+		fileservice.add(fileVO);
 		
 		return "redirect:/boast/list";
 	}
