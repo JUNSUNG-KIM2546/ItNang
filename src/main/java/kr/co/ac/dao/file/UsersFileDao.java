@@ -6,4 +6,6 @@ public interface UsersFileDao {
 
 	void fileAdd(UsersFileVO file);
 
+	void fileDelete(Long uNo);
+
 }

@@ -17,4 +17,10 @@ public class UsersFileServiceImpl implements UsersFileService {
 		filedao.fileAdd(file);
 	}
 
+
+	@Override
+	public void delete(Long uNo) {
+		filedao.fileDelete(uNo);
+	}
+
 }

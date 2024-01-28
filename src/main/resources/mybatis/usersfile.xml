@@ -17,4 +17,10 @@
        )
     </insert>
     
+    <delete id="fileDelete">
+    	DELETE
+    	FROM users_file
+    	WHERE u_no = #{uNo}
+    </delete>
+    
 </mapper>

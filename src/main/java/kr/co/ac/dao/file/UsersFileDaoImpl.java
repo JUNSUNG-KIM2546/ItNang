@@ -17,4 +17,10 @@ public class UsersFileDaoImpl implements UsersFileDao {
 		sql.insert("usersfile.fileInsert", file);
 	}
 
+
+	@Override
+	public void fileDelete(Long uNo) {
+		sql.insert("usersfile.fileDelete", uNo);
+	}
+
 }

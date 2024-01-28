@@ -83,14 +83,11 @@
 </body>
 
 <script>
-	$('#reset2').on( "click", function() {
-		
-		$('#modalDiv')[0].reset();
-		console.log("리셋")
-	});
-	$('#reset1').on( "click", function() {
-		$('#modalDiv')[0].reset();
-		console.log("리셋")
-	});
+	$("#reset1").on("click", function() {
+		location.reload();
+	})
+	$("#reset2").on("click", function() {
+		location.reload();
+	})
 </script>
 </html>

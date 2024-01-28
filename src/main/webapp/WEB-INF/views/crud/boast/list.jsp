@@ -48,7 +48,7 @@
 	          <!-- article text data -->
 	          <div class="reaction">
 	            <div class="liked-people">
-	              <p><span class="point-span">2,412,751명</span>이 좋아합니다</p>
+	              <p><span class="point-span">${boastList.boastCo}명</span>이 좋아합니다</p>
 	            </div>
 	            <div class="description">
 	              <p><span class="point-span userID">${boastList.uNick }</span><span class="at-tag">${boastList.boastCn }</span> 🌱</p>

@@ -38,8 +38,8 @@
 				</div>
 			</c:if>
 	    	
-	    	<!-- 로그인 상태 -->
-	    	<c:if test="${loginVO != null}">
+	    	<!-- 회원 로그인 상태 -->
+	    	<c:if test="${loginVO != null && loginVO.useAt == 'N' && login.useAt != 'A'}">
 				<div class="nav-container">
 					<div class="nav-1">
 						<!-- <a href="/"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="logo_img"></a> -->
@@ -56,9 +56,40 @@
 						<!-- <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="탐색"> -->
 						<a href="#" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트"></a>
 						<a href="/board/list" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a> 
-						<c:if test="${loginVO.useAt != 'N' && loginVO.useAt == 'A'}">
-			            	<a href="../UsersList"><img src="https://w7.pngwing.com/pngs/974/188/png-transparent-computer-icons-user-others.png"></a>
-			            </c:if>
+						<a id="userUpdates" data-bs-toggle="modal" data-bs-target="#UserUpdateModal" href="#" alt="마이페이지">
+							<!-- 프로필 이미지가 없을 경우 -->
+							<c:if test="${loginVO.uImg == 'N'}">
+								<img class="pic"  alt="프로필IMG" src="/resources/project/image/Logo/cat-4475583_1280.png"> <span>${loginVO.uNick}</span>
+							</c:if>
+							
+							<!-- 프로필 이미지가 있을 경우 -->
+							<c:if test="${loginVO.uImg == 'Y'}">
+								<img class="pic"  alt="프로필IMG(${loginVO.saveName})" src="/upload/users/${loginVO.fileName}.${loginVO.fileExt}"> <span>${loginVO.uNick}</span>
+							</c:if>
+						</a>
+						<a href="/actionLogout" class="btn btn-outline-secondary"> Logout </a>
+					</div>
+				</div>
+			</c:if>
+			
+	    	<!-- 어드민 로그인 상태 -->
+	    	<c:if test="${loginVO != null && loginVO.useAt != 'N' && loginVO.useAt == 'A'}">
+				<div class="nav-container">
+					<div class="nav-1">
+						<!-- <a href="/"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="logo_img"></a> -->
+						<a href="/">
+							<img class="logo_instagram_txt" src="/resources/project/image/Logo/logo_text.png" alt="logo_text">
+						</a>
+					</div>
+					<form>
+						<input id="searchInputs" type="text" name="keyword" value="${pager.keyword}" class="input-search" placeholder="검색">
+					</form>
+					<div class="nav-2">
+						<a href="/boast/list"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/logo.png" alt="Add"></a>
+						<a href="#"><img src="/resources/project/image/Logo/dm2.png" alt="DM"></a>
+						<!-- <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="탐색"> -->
+						<a href="/board/list" ><img src="https://cdn-icons-png.flaticon.com/512/2262/2262154.png" alt="자유게시판"></a> 
+		            	<a href="/Admin/Dashboard"><img src="https://cdn-icons-png.flaticon.com/512/7606/7606796.png" alt=""></a>
 						<a id="userUpdates" data-bs-toggle="modal" data-bs-target="#UserUpdateModal" href="#" alt="마이페이지">
 							<!-- 프로필 이미지가 없을 경우 -->
 							<c:if test="${loginVO.uImg == 'N'}">

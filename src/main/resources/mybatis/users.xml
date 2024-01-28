@@ -6,6 +6,7 @@
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
 	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
 		<result property="uNo" 			column="u_no"/>
+		<result property="uNick" 		column="u_nick"/>
 		<result property="uId" 			column="u_id"/>
 		<result property="uPass" 		column="u_pass"/>
 		<result property="uName" 		column="u_name"/>
@@ -31,7 +32,7 @@
 	</resultMap>
 	
 	<sql id="search">
-		SELECT u.*, uf.* 
+		SELECT u.*, uf.file_no, uf.save_name, uf.file_name, uf.up_time, uf.file_path, uf.file_ext, uf.file_size 
 		FROM users u LEFT OUTER JOIN users_file uf USING(u_no)
 		<where>
 			<if test="search == 1">
@@ -49,9 +50,7 @@
 			<if test="search == 5">
 				u_phone LIKE CONCAT('%', #{keyword}, '%')
 			</if>
-			
 		</where>
-		ORDER BY u_id
 	</sql>
 	
 	<select id="total" resultType="Integer">
@@ -132,7 +131,7 @@
 	</update>
 	
 	<delete id="usersdelete">
-		DELETE
+		DELETE 
 		FROM users
 		WHERE u_no = #{uNo}
 	</delete>

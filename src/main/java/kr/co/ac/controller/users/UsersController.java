@@ -1,7 +1,6 @@
 package kr.co.ac.controller.users;
 
 import java.io.File;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,10 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.ac.pager.Pager;
 import kr.co.ac.service.file.UsersFileService;
 import kr.co.ac.service.users.UsersService;
 import kr.co.ac.vo.UsersFileVO;
@@ -47,24 +44,6 @@ public class UsersController {
 		
 		return "redirect:/";
 		//리다이렉트
-	}
-	
-	// 회원리스트
-	@GetMapping("/UsersList")
-	String userslist(Model model, Pager pager) {
-		List<UsersVO> userslist = usersservice.selectUsersList(pager);
-		model.addAttribute("userslist", userslist);
-		
-		return users + "Ulist";
-	}
-	// 회원리스트(데이터)
-	@GetMapping("/UsersListAll")
-	@ResponseBody
-	List<UsersVO> userslistAll(UsersVO usersVO) {
-		
-		List<UsersVO> userslist = usersservice.selectUsersListAll(usersVO);
-
-		return userslist;
 	}
 	
 	// 회원업데이트
@@ -122,9 +101,10 @@ public class UsersController {
 	// 회원삭제
 	@GetMapping("/UserDelete/{uNo}")
 	String usersdelete(@PathVariable Long uNo) {
+		fileservice.delete(uNo);
 		usersservice.delete(uNo);
 			
-		return "redirect:../UsersList";
+		return "redirect:/UsersList";
 	}
 	
 }

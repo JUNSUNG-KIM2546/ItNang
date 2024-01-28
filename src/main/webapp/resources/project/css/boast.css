@@ -38,7 +38,7 @@ nav {
 }
 .nav-container {
     max-width: 1000px;
-    padding: 0 20px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
 }
@@ -65,7 +65,7 @@ nav img {
     margin-left: 20px;
 }
 .input-search {
-    width: 200px;
+    width: 180px;
     height: 12px;
     padding: 7px;
     box-sizing: content-box;

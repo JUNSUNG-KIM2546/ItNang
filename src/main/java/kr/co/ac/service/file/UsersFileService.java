@@ -6,4 +6,6 @@ public interface UsersFileService {
 
 	void UfileAdd(UsersFileVO file);
 
+	void delete(Long uNo);
+
 }

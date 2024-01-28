@@ -57,6 +57,16 @@
     <div class="modal-footer">
 		<button type="button" class="btn btn-secondary" id="reset2" data-bs-dismiss="modal">닫기</button>
     </div>
-	
+    
 </body>
+
+<script>
+	$("#reset1").on("click", function() {
+		location = "/boast/list"
+	})
+	$("#reset2").on("click", function() {
+		location = "/boast/list"
+	})
+</script>
+
 </html>

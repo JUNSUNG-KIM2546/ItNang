@@ -6,6 +6,7 @@
 	<!-- 마이바티스 콘피그 셋팅을 해주면 안해도됨 -->
 	<resultMap type="kr.co.ac.vo.UsersVO" id="usersVO">
 		<result property="uNo" 			column="u_no"/>
+		<result property="uNick" 		column="u_nick"/>
 		<result property="uId" 			column="u_id"/>
 		<result property="uPass" 		column="u_pass"/>
 		<result property="uName" 		column="u_name"/>
