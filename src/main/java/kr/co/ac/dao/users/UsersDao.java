@@ -1,5 +1,6 @@
 package kr.co.ac.dao.users;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import kr.co.ac.pager.Pager;
@@ -20,5 +21,7 @@ public interface UsersDao {
 	int total(Pager pager);
 
 	List<UsersVO> usersListAll(UsersVO usersVO);
+
+	List<LinkedHashMap<String, Object>> selectUsersListExcel(UsersVO usersVO);
 
 }

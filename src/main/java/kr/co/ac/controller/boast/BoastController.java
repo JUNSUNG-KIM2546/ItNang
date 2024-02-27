@@ -30,7 +30,7 @@ public class BoastController {
 	final String crud = "crud/";
 	final String path = "boast/";
 
-	private final String fileStorePath = "C:/sts-bundle/itnang-workspace/upload/boast/";
+	private final String fileStorePath = "C:/sts-bundle3/itnang_workspace/upload/boast/";
 	
 	//private static final Logger logger = LoggerFactory.getLogger(LoginController.class); 
 	

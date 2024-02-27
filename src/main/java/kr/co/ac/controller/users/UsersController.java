@@ -23,7 +23,7 @@ import kr.co.ac.vo.UsersVO;
 public class UsersController {
 	final String users = "users/";
 	
-	private final String fileStorePath = "C:/sts-bundle/itnang-workspace/upload/users/";
+	private final String fileStorePath = "C:/sts-bundle3/itnang_workspace/upload/users/";
 	
 	@Autowired
 	UsersService usersservice;
@@ -52,6 +52,7 @@ public class UsersController {
 		UsersVO item = usersservice.item(uNo);
 		
 		model.addAttribute("item",item);
+		System.out.println("item======================="+ item);
 		
 		return users + "Uupdate";
 	}	

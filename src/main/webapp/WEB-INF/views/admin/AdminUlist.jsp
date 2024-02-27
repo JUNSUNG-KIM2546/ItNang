@@ -5,6 +5,16 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
+<script>
+	function selectUsersListExcel() {
+		// 엑셀 다운로드를 위한 URL 설정
+	    var downloadUrl = "<c:url value='/Admin/UsersListExcel'/>";
+
+	 	// 현재 페이지를 다운로드 URL로 리디렉션합니다.
+	    window.location.href = downloadUrl;
+	}
+</script>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,7 +125,7 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <div>
-					<form>
+					<form id="searchForm">
 						<div class="row mb-2"> <!-- 그리드 총 크기는 12 -->
 							<div class="col-6"></div>	<!-- 빈 div를 만들어 공간처리 -->
 							<div class="col-2">
@@ -132,7 +142,10 @@
 								<input type="text" name="keyword" class="form-control form-control-sm" value="${pager.keyword}">
 							</div>					
 							<div class="col-1 d-grid">
-								<button class="btn btn-sm btn-primary"> 검색 </button>
+								<button title="검색" class="btn btn-sm btn-primary"> 검색 </button>
+							</div>
+							<div class="col-1 d-grid">
+								<button type="button" title="엑셀 다운로드" class="btn btn-sm btn-dark" onclick="selectUsersListExcel()"> 엑셀 다운로드 </button>
 							</div>
 						</div>
 					</form>

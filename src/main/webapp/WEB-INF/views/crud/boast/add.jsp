@@ -30,8 +30,16 @@
 				<input type="hidden" name="uNo" value="${loginVO.uNo}">
 				<div>
 					<img class="profileimg" id="preview" alt="자랑게시물IMG" src="">
-					<input type="file" name="boastUploadName" onchange="">
-					<input type="hidden" name="boastImg" value=""> <!-- boastUploadName에 값이 있으면 Y, 없으면 N -->
+					<input type="file" name="boastUploadName" onchange="updateHiddenInput(this)">
+					<input type="hidden" name="boastImg" value="N"> <!-- boastUploadName에 값이 있으면 Y, 없으면 N -->
+					<script>
+						function updateHiddenInput(fileInput) {
+						    // 파일이 선택되었는지 확인
+						    var isFileSelected = fileInput.files.length > 0;
+						    // 선택된 경우 'Y', 그렇지 않은 경우 'N'으로 설정
+						    document.getElementsByName('boastImg')[0].value = isFileSelected ? 'Y' : 'N';
+						}
+					</script>
 				</div>
 				<hr>
 				<c:if test="${loginVO.useAt == 'A' }">

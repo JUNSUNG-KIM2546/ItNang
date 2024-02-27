@@ -1,15 +1,23 @@
 package kr.co.ac.controller.admin;
 
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.ac.common.ExcelUtil;
 import kr.co.ac.pager.Pager;
 import kr.co.ac.service.board.BoardService;
 import kr.co.ac.service.file.UsersFileService;
@@ -58,6 +66,21 @@ public class AdminController {
 	List<UsersVO> userslistAll(UsersVO usersVO) {
 		List<UsersVO> userslist = usersservice.selectUsersListAll(usersVO);
 		return userslist;
+	}
+	// 회원리스트(엑셀다운로드)
+	@RequestMapping(value="/UsersListExcel")
+	public void listExcel(UsersVO usersVO, ModelMap model, HttpServletResponse response) throws Exception {
+
+		List<LinkedHashMap<String, Object>> resultList = usersservice.selectUsersListExcel(usersVO);;
+
+		response.setHeader("Content-Disposition", "attachment;filename=adminExcel.xls");
+		response.setContentType("application/octet-stream");
+
+		List<String> header = Arrays.asList("No", "ID", "Nick", "PW", "Name", "eMail", "Tell", "가입일자", "수정일자", "권한여부");
+
+		ByteArrayInputStream stream = ExcelUtil.createListToExcel(header, resultList);
+
+		IOUtils.copy(stream, response.getOutputStream());
 	}
 	
 	// 회원상세정보

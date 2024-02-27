@@ -1,5 +1,6 @@
 package kr.co.ac.service.users;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public List<UsersVO> selectUsersListAll(UsersVO usersVO) {
 		return usersdao.usersListAll(usersVO);
+	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectUsersListExcel(UsersVO usersVO) {
+		return usersdao.selectUsersListExcel(usersVO);
 	}
 
 }

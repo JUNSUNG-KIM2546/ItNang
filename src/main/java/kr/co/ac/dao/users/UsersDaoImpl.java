@@ -1,5 +1,6 @@
 package kr.co.ac.dao.users;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -48,6 +49,11 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public List<UsersVO> usersListAll(UsersVO usersVO) {
 		return sql.selectList("users.userslistAll", usersVO);
+	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectUsersListExcel(UsersVO usersVO) {
+		return sql.selectList("users.selectUsersListExcel", usersVO);
 	}
 
 }

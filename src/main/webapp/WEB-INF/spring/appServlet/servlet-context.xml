@@ -18,9 +18,9 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- 클라이언트(뷰)에 첨부파일 불러오기 -->
-	<resources mapping="/upload/users/**" location="file:///c:/sts-bundle/itnang-workspace/upload/users/"/>
-	<resources mapping="/upload/boast/**" location="file:///c:/sts-bundle/itnang-workspace/upload/boast/"/>
-	<resources mapping="/upload/board/**" location="file:///c:/sts-bundle/itnang-workspace/upload/board/"/>
+	<resources mapping="/upload/users/**" location="file:///c:/sts-bundle3/itnang_workspace/upload/users/"/>
+	<resources mapping="/upload/boast/**" location="file:///c:/sts-bundle3/itnang_workspace/upload/boast/"/>
+	<resources mapping="/upload/board/**" location="file:///c:/sts-bundle3/itnang_workspace/upload/board/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -36,8 +36,6 @@
 	<context:component-scan base-package="kr.co.ac" />
 	
 	<!-- 트랜잭션 -->
-	<tx:annotation-driven/>
-	
-	
+	<!-- <tx:annotation-driven/> -->
 	
 </beans:beans>
