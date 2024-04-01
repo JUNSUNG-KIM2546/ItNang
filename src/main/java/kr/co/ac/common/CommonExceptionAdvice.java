@@ -10,16 +10,17 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class CommonExceptionAdvice {
 	final String common = "common/";
 	
-	// 400에러 페이지
-	@ExceptionHandler(RuntimeException.class)
-	public String handle400() {
-		return common + "error400";
-	}
-	
-	// 404에러 페이지
-	@ExceptionHandler(NoHandlerFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String handle404(NoHandlerFoundException nfe) {
-		return common + "error404";
-	}
+	/*
+	 * // 400에러 페이지
+	 * 
+	 * @ExceptionHandler(RuntimeException.class) public String handle400() { return
+	 * common + "error400"; }
+	 * 
+	 * // 404에러 페이지
+	 * 
+	 * @ExceptionHandler(NoHandlerFoundException.class)
+	 * 
+	 * @ResponseStatus(HttpStatus.NOT_FOUND) public String
+	 * handle404(NoHandlerFoundException nfe) { return common + "error404"; }
+	 */
 }

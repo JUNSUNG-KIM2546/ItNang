@@ -8,7 +8,7 @@
 <script>
 	function selectUsersListExcel() {
 		// 엑셀 다운로드를 위한 URL 설정
-	    var downloadUrl = "<c:url value='/Admin/UsersListExcel'/>";
+	    var downloadUrl = "/Admin/UsersListExcel";
 
 	 	// 현재 페이지를 다운로드 URL로 리디렉션합니다.
 	    window.location.href = downloadUrl;
@@ -148,6 +148,9 @@
 								<button type="button" title="엑셀 다운로드" class="btn btn-sm btn-dark" onclick="selectUsersListExcel()"> 엑셀 다운로드 </button>
 							</div>
 						</div>
+					</form>
+					<form action="/Admin/UsersListExcel">
+						<button title="엑셀 다운로드" class="btn btn-sm btn-dark" > 엑셀 다운로드 </button>
 					</form>
 				</div>
 				

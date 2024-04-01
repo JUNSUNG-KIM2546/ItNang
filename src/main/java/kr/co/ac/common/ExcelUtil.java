@@ -168,6 +168,7 @@ public class ExcelUtil {
             
             // 테이블 헤더 스타일 설정
             CellStyle headStyle = workbook.createCellStyle();
+            
             // 경계선 설정
             headStyle.setBorderTop(BorderStyle.THIN);
             headStyle.setBorderBottom(BorderStyle.THIN);

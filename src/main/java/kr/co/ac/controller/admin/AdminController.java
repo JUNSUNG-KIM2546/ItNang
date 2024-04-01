@@ -73,10 +73,12 @@ public class AdminController {
 
 		List<LinkedHashMap<String, Object>> resultList = usersservice.selectUsersListExcel(usersVO);;
 
-		response.setHeader("Content-Disposition", "attachment;filename=adminExcel.xls");
+		response.setHeader("Content-Disposition", "attachment;filename=UsersListExcel.xls");
+		/* MIME 타입 문제: application/octet-stream 대신 application/vnd.ms-excel을 사용해 보세요. 
+		 일부 브라우저나 시스템에서는 MIME 타입에 따라 다르게 반응할 수 있습니다. */
 		response.setContentType("application/octet-stream");
 
-		List<String> header = Arrays.asList("No", "ID", "Nick", "PW", "Name", "eMail", "Tell", "가입일자", "수정일자", "권한여부");
+		List<String> header = Arrays.asList("uNo", "uId", "uNick", "uPass", "uNameuName", "uEmail", "uPhone", "registDate", "updateDate", "useAt");
 
 		ByteArrayInputStream stream = ExcelUtil.createListToExcel(header, resultList);
 

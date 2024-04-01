@@ -71,17 +71,18 @@
 	</select>
 	<!-- 유저 리스트 목록 엑셀 다운로드 -->
 	<select id="selectUsersListExcel" resultType="UsersVO">
-		SELECT lists.u_no AS No
-			, lists.u_id AS ID
-			, lists.u_nick AS Nick
-			, lists.u_pass AS PW
-			, lists.u_name AS Name
-			, lists.u_email AS eMail
-			, lists.u_phone AS Tell
-			, lists.regist_date AS 가입일자
-			, lists.update_date AS 수정일자
-			, lists.use_at 권한여부
-		FROM (<include refid="search"></include>) lists
+		SELECT lists.u_no AS uNo
+			, lists.u_id AS uId
+			, lists.u_nick AS uNick
+			, lists.u_pass AS uPass
+			, lists.u_name AS uName
+			, lists.u_email AS uEmail
+			, lists.u_phone AS uPhone
+			, lists.regist_date AS registDate
+			, lists.update_date AS updateDate
+			, lists.use_at AS useAt
+		<!-- FROM (<include refid="search"></include>) lists -->
+		FROM users lists
 		ORDER BY regist_date DESC
 	</select>
 	
